@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className={`container ${sticky ? 'dark-nav' : ''}`}>
       <img src={logo} alt="" className='logo'/>
       <ul>
-        <li>Home</li>
+        <li className='text-red-50'>Home</li>
         <li>Food</li>
         <li>Tourist spot</li>
         <li>Accomodation</li>
