@@ -1,23 +1,21 @@
-import React from 'react'
-import Navbar from './Component/Navbar/Navbar'
-import Brochure from './Component/Brochure/Brochure'
-import Program from './Component/Program/Program'
-import Title from './Component/Title/Title'
-import About from './Component/About/About'
+import React, { useState } from 'react'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home'
+import Food from './pages/Food'
+import Tourism from './pages/Tourism'
+import Hotels from './pages/Hotels'
 
 const App = () => {
   return (
-    <div>
-      <Navbar/>
-      <Brochure/>
-      <div className='container'>
-        <Title subTitle='What we have' title='Penang is not just a place to visit, it is a living experience, a feast for the senses, and a celebration of coexistence, where every step tells a story.'/>
-        <Program/>
-        <About/>
-        <Title subTitle='Gallery' title='More about Penang'/>
-        </div>
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/Food' element={<Food/>}/>
+        <Route path='/Tourism' element={<Tourism/>}/>
+        <Route path='/Hotels' element={<Hotels/>}/>
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

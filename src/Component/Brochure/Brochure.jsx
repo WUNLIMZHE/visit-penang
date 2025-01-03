@@ -7,7 +7,7 @@ const Brochure = () => {
     <div className='brochure container'>
         <div className="brochure-text">
             <h1>My hometown Penang</h1>
-            <h2>Welcome You</h2>
+            <h2>Welcomes You</h2>
             <p>
                 Welcome to Penang, a beautiful island with rich history, 
                 tasty food, and stunning views. You can explore George Town, 
