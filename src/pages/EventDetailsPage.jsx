@@ -1,6 +1,7 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import events from '../constants/events';
+// import Navbar from "../components/Navbar";
+import Navbar from "../Component/Navbar/Navbar";
+import events from '../data/events';
 import Header from "../components/Header";
 import Button from '../components/Button';
 import Footer from '../components/Footer';

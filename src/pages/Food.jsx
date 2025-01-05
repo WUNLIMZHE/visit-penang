@@ -1,10 +1,21 @@
-import React from "react";
+// import React from "react";
+import PropTypes from "prop-types";  // Import PropTypes
 import Navbar from "../Component/Navbar/Navbar";
-export default function Food(){
-    return(
+import CardsLayout from "./CardsLayout";
+
+export default function Food({ data }) {
+    const items = data.filter(item => item.category === "food");
+    console.log(items);
+
+    return (
         <>
             <Navbar />
-            <p>Welcome to Food</p>
+            <CardsLayout data={items} />
         </>
     );
 }
+
+// Validate the 'data' prop
+Food.propTypes = {
+    data: PropTypes.array.isRequired,  // Ensure data is an array and is required
+};
