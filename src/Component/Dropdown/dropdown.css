@@ -1,0 +1,26 @@
+.dropdown-button{
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 1rem;
+}
+
+.menu{
+    background-color: #0b7e54;
+    position: absolute;
+    gap: 0;
+    top: 5rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20%;
+    width: 8rem;
+}
+
+.menu li{
+    color: white;
+    margin: 0;
+    padding: 0 1rem;
+}
