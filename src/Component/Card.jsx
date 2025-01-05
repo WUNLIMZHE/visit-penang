@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function Card(props) {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:opacity-80 transition flex flex-col">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:opacity-80 transition flex flex-col">
       <a href="#">
         <img
           className="rounded-t-lg object-cover w-full h-[208px]"
