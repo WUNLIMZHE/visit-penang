@@ -31,7 +31,7 @@ const events = [
     price: "5-10 per bowl",
     location: "Nan Guang Kopitiam, 67 Main Road, 11000 Balik Pulau, Pulau Pinang, Malaysia",
     rating: "4.0",
-    description: "Authentic Penang laksa with rich, tangy flavors.",
+    description: "Enjoy the authentic taste of Penang laksa, a tangy, flavorful dish with tamarind broth, fresh herbs, rice noodles, and a perfect balance of sweet, sour, and spicy notes.",
     details: "It is a well-known eatery in Penang, celebrated for its signature dish, Penang Asam Laksa. This flavorful dish features thick rice noodles, poached fish, and fresh vegetables like sliced cucumber, pineapple, and onions, all combined in a tangy fish broth. The warm and welcoming ambiance, paired with affordable pricing, makes it a must-visit destination for locals and tourists seeking an authentic taste of Penang.",
     img: "https://static.where-e.com/Malaysia/Penang_Island/Kampung_Paya_Kongsi/Kim-Laksa-Balik-Pulau_895882867411e5c24cbb2863ed4e0985.jpg",
     alt: "Asam Laksa",

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Card(props) {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:opacity-80 transition">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:opacity-80 transition flex flex-col">
       <a href="#">
         <img
           className="rounded-t-lg object-cover w-full h-[208px]"
@@ -11,7 +11,7 @@ function Card(props) {
           alt={props.alt}
         />
       </a>
-      <div className="p-5 grid">
+      <div className="p-5 flex flex-col flex-grow">
         <a href="#">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {props.name}
@@ -68,6 +68,7 @@ function Card(props) {
             <span>{props.rating}/5.0</span>
           </div>
         </div>
+        {/* Push the button to the bottom */}
         <div className="mt-auto">
           <a
             href="#"
