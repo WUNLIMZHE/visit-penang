@@ -16,6 +16,10 @@ nav{
     width: 200px;
 }
 
+nav ul{
+    white-space: nowrap;
+}
+
 nav ul li{
     display: inline-block;
     list-style-type: none;

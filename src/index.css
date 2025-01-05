@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (min-width: 640px) {
+    .container {
+        max-width: 100%;  /* Overrides the max-width property */
+    }
+}
 
 *{
     margin: 0;
@@ -23,10 +28,10 @@ a{
     cursor: pointer;
 }
 
-.container{
+/* .container{
     padding-left: 5%;
     padding-right: 5%;
-}
+} */
 
 .btn{
     background: white;
