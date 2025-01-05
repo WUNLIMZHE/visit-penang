@@ -1,9 +1,10 @@
-import React from "react";
+// import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function Card(props) {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:opacity-80 transition flex flex-col">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:opacity-80 transition flex flex-col cursor-pointer">
       <a href="#">
         <img
           className="rounded-t-lg object-cover w-full h-[208px]"
@@ -84,9 +85,9 @@ function Card(props) {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
@@ -96,5 +97,22 @@ function Card(props) {
     </div>
   );
 }
+
+// Props validation
+Card.propTypes = {
+  img: PropTypes.string.isRequired, // Image URL is required
+  alt: PropTypes.string, // Alternative text for the image
+  name: PropTypes.string.isRequired, // Card title
+  description: PropTypes.string.isRequired, // Description text
+  location: PropTypes.string, // Location text
+  rating: PropTypes.number, // Rating (number)
+};
+
+// Default props (optional)
+Card.defaultProps = {
+  alt: "Card image", // Default alt text
+  location: "Unknown location", // Default location text
+  rating: 0, // Default rating
+};
 
 export default Card;
