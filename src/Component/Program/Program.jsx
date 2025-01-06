@@ -10,7 +10,7 @@ import hotel_icon from "../../assets/hotel_icon.png";
 
 const Program = () => {
   return (
-    <div className="programs sm:mx-10">
+    <div className="programs">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center gap-10 mx-10 md:mx-0">
         <Link className="program" to="/Food">
           <div>
