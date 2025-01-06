@@ -1,26 +1,52 @@
-.dropdown-button{
-    background-color: #04AA6D;
-    border: none;
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    margin: 0 1rem;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.menu{
-    background-color: #0b7e54;
+/* Optional customizations for hover effect */
+@layer utilities {
+  .fancy-hover {
+    @apply transition duration-300 ease-in-out transform;
+  }
+
+  .fancy-hover:hover {
+    @apply scale-110 text-blue-500;
+  }
+
+  .fancy-hover:hover::after {
+    content: "";
     position: absolute;
-    gap: 0;
-    top: 5rem;
-    right: 1rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20%;
-    width: 8rem;
+    width: 100%;
+    height: 3px;
+    background-color: currentColor;
+    bottom: 0;
+    left: 0;
+    @apply transition-all duration-300;
+  }
 }
 
-.menu li{
-    color: white;
-    margin: 0;
-    padding: 0 1rem;
+.dropdown-button {
+  background-color: #04aa6d;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 1rem;
+}
+
+.menu {
+  background-color: rgb(153, 200, 229);
+  position: absolute;
+  gap: 0;
+  top: 5rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10%;
+  width: 8rem;
+  margin: 10px;
+}
+
+.menu li {
+  color: white;
+  padding-left: 5px;
 }
