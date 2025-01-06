@@ -8,14 +8,14 @@
 }
 
 .menu{
-    background-color: #0b7e54;
+    background-color: hsl(195, 100%, 69%);
     position: absolute;
     gap: 0;
     top: 5rem;
     right: 1rem;
     display: flex;
     flex-direction: column;
-    border-radius: 20%;
+    border-radius: 10%;
     width: 8rem;
 }
 
