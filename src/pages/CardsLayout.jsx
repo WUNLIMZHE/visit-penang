@@ -23,12 +23,12 @@ const CardsLayout = ({ data }) => {
   }
 
   function handleDetailsButtonClick(id) {
-    console.log("Looking for details for event id: ", id);
-    const event = data.find((e) => e.id === id);
-    console.log("Event found: ", event);
-    if (event) {
-      console.log("Event found!");
-      navigate("/event", { state: { event } }); // Ensure the state is passed here
+    console.log("Looking for details for cardid: ", id);
+    const card = data.find((e) => e.id === id);
+    console.log("Card found: ", card);
+    if (card) {
+      console.log("Card found!");
+      navigate("/details", { state: { card } }); // Ensure the state is passed here
     } else {
       console.log("Event not found");
     }

@@ -95,7 +95,9 @@ const events = [
     name: "The Habitat",
     price: "Standard Entrance Pass: RM60, Family Combo: RM60, Forest Bathing: RM100",
     location: "C7G9+69, Bukit Bendera, 11300 Bukit Bendera, Pulau Pinang",
-    openingHours: `Opens Daily Monday to Friday 9:00am - 7:00pm (Last entry at 5:30pm) 
+    openingHours: 
+    `Opens Daily Monday to Friday 9:00am - 7:00pm (Last entry at 5:30pm) 
+    
     Saturday to Sunday 9:00am - 8:00pm (Last entry at 6:30pm)`,
     rating: "4.5",
     description: "Experience The Habitat Penang Hill, a haven of stunning views and rich biodiversity.",
@@ -141,14 +143,14 @@ const events = [
     openingHours: `Opens daily 9.00am - 6.00pm`,
     rating: "4.3",
     description: "Discover Penang’s wartime history through immersive exhibits at the Penang War Museum.",
-    details: "The Penang War Museum, located on the island’s southwest coast, is a captivating historical site that provides an in-depth look into the island's military history, particularly during World War II. Set in a former British military stronghold, the museum showcases a range of exhibits, including old artillery, tunnels, and bunkers that were once used for defense. Visitors can walk through preserved structures and experience firsthand the conditions soldiers faced, offering a unique, immersive way to learn about the island’s wartime significance. \nIn addition to its exhibits, the Penang War Museum is a place of remembrance, honoring the bravery and sacrifices made during the war. The museum’s fascinating storytelling, complemented by its authentic war relics and recreated environments, makes it a must-visit for history enthusiasts and anyone interested in the resilience of Penang during its turbulent past. Whether you are a history buff or a curious traveler, this museum offers a powerful and emotional insight into Penang’s wartime history.",
+    details: "The Penang War Museum, located on the island’s southwest coast, is a captivating historical site that provides an in-depth look into the island's military history, particularly during World War II. Set in a former British military stronghold, the museum showcases a range of exhibits, including old artillery, tunnels, and bunkers that were once used for defense. Visitors can walk through preserved structures and experience firsthand the conditions soldiers faced, offering a unique, immersive way to learn about the island’s wartime significance. \n\nIn addition to its exhibits, the Penang War Museum is a place of remembrance, honoring the bravery and sacrifices made during the war. The museum’s fascinating storytelling, complemented by its authentic war relics and recreated environments, makes it a must-visit for history enthusiasts and anyone interested in the resilience of Penang during its turbulent past. Whether you are a history buff or a curious traveler, this museum offers a powerful and emotional insight into Penang’s wartime history.",
     img: "/war-museum.jpeg",
     alt: "Penang War Museum",
     source: "https://mypenang.gov.my/all/my-stories/118/?lg=en",
     category: "tourist-spot"
   },
   {
-    id: 19,
+    id: 99,
     name: "Penang War Museum",
     price: "Malaysians: RM22.00 per adult & RM12.00 per child, Foreigners: RM38.00 per adult & RM20.00 per child",
     location: "Lot 1350, Mukim 12, Daerah Barat Daya, Batu Maung, 11960, Penang, Malaysia.",

@@ -5,7 +5,7 @@ import CardsLayout from "./CardsLayout";
 
 export default function Food({ data }) {
     const items = data.filter(item => item.category === "food");
-    console.log(items);
+    // console.log(items);
 
     return (
         <>
