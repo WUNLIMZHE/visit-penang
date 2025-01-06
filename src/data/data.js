@@ -196,7 +196,7 @@ const events = [
     rating: "4.1",
     description: "A beachfront property offering a tranquil escape with modern suites and picturesque views of Batu Ferringhi, Penang.",
     details: "By The Sea Penang is a four-star property located along the sandy shores of Batu Ferringhi in Penang. The property features spacious, well-equipped suites with private balconies overlooking the sea or lush gardens. Guests can enjoy direct beach access, an outdoor pool, a fitness center, and nearby attractions such as local eateries and the vibrant Batu Ferringhi Night Market. This property is ideal for families and couples looking for a relaxing retreat in Penang. Location: Batu Ferringhi, Penang, Malaysia. ",
-    img: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/34583291.jpg?k=468c325fbffc33981337710a46058ed08a9fda493200b2c1ca8e24930fd16acc&o=",
+    img: "https://cf.bstatic.com/xdata/images/hotel/max500/180507066.jpg?k=a22562786f4ce17ee2758d5ec3cadc60a9d52293ffecb1f1f4f0de61455369b9&o=",
     alt: "By The Sea Penang",
     booking: "https://www.booking.com/hotel/my/by-the-sea-penang-batu-ferringhi.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=7&hpos=7&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734852647&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
     source: "https://www.bytheseapenang.com/",
