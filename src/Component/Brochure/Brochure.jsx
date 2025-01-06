@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import './Brochure.css'
 import searchGreen from "../../assets/search_iconGreen.png"
 
@@ -6,9 +6,9 @@ const Brochure = () => {
   return (
     <div className='brochure container'>
         <div className="brochure-text">
-            <h1>My hometown Penang</h1>
-            <h2>Welcomes You</h2>
-            <p>
+            <h1 className='text-4xl md:text-5xl lg:text-6xl'>My hometown Penang</h1>
+            <h2 className='text-3xl md:text-4xl lg:text-5xl'>Welcomes You</h2>
+            <p className='text-base md:text-lg lg:text-xl mt-2 md:mt-3 lg:mt-4'>
                 Welcome to Penang, a beautiful island with rich history, 
                 tasty food, and stunning views. You can explore George Town, 
                 a UNESCO World Heritage Site, relax on sunny beaches, or 
