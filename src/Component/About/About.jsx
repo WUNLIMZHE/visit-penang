@@ -21,7 +21,7 @@ const About = () => {
         {!isVideoPlaying?(<><img src={about_img} alt="" className='about_img'/>
         <img src={play_icon} alt="" className='play_icon' onClick={handlePlayClick}/></>):
         (
-          <video controls autoPlay className="about_vid" onEnded={handleVideoEnd} volume={0.1} style={{ width: '400px', height: 'auto' }}>
+          <video controls autoPlay className="about_vid" onEnded={handleVideoEnd} volume={0.1} style={{ width: 'auto', height: 'auto' }}>
             <source src={about_vid} type="video/mp4" />
           </video>
         )}

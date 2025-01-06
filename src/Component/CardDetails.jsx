@@ -2,18 +2,18 @@ import { Link } from "react-router-dom";
 
 function CardDetails({ data }) {
   const card = data.card;
-  
+
   let backToPage, backToLabel;
 
-  if (card.category === 'food'){
-    backToPage = '/Food';
-    backToLabel = 'foods';
-  } else if (card.category === 'tourist-spot'){
-    backToPage = '/Tourism';
-    backToLabel = 'tourist spots';
-  } else if (card.category === 'hotel'){
-    backToPage = '/Hotels';
-    backToLabel = 'hotels';
+  if (card.category === "food") {
+    backToPage = "/Food";
+    backToLabel = "foods";
+  } else if (card.category === "tourist-spot") {
+    backToPage = "/Tourism";
+    backToLabel = "tourist spots";
+  } else if (card.category === "hotel") {
+    backToPage = "/Hotels";
+    backToLabel = "hotels";
   }
 
   console.log("Received data from card", data);
@@ -28,7 +28,7 @@ function CardDetails({ data }) {
     <div className="max-w-5xl mx-auto px-8 mt-[128px]">
       <p>
         ←{" "}
-        <Link to={backToPage} className="link">
+        <Link to={backToPage} className="link hover:underline">
           View more {backToLabel}
         </Link>
       </p>
@@ -116,7 +116,6 @@ function CardDetails({ data }) {
                 {card.openingHours.split("\n").map((line, index) => (
                   <span key={index}>
                     {line}
-                    <br />
                   </span>
                 ))}
               </spa>
@@ -196,6 +195,69 @@ function CardDetails({ data }) {
             </div>
           </div>
         )}
+        {card.category === "hotel" && (
+          <div className="flex gap-x-3 mt-2 mb-5">
+            <div className="grid gap-1 items-center text-theme-800 content-start mt-1">
+              <svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+                className="text-xl"
+                xmlns="http://www.w3.org/2000/svg"
+                data-icon="bed"
+              >
+                <symbol id="icon:bed">
+                  <rect
+                    x="3"
+                    y="10"
+                    width="18"
+                    height="8"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    rx="2"
+                    ry="2"
+                  />
+                  <line
+                    x1="3"
+                    y1="18"
+                    x2="3"
+                    y2="21"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <line
+                    x1="21"
+                    y1="18"
+                    x2="21"
+                    y2="21"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <rect
+                    x="4"
+                    y="11"
+                    width="7"
+                    height="5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </symbol>
+                <use xlinkHref="#icon:bed"></use>
+              </svg>
+            </div>
+            <div className="grid gap-1 items-center font-bold text-lg content-start">
+              <a className="hover:underline hover:cursor-pointer mt-2" href={card.booking} target="_blank" rel="noopener noreferrer">
+                Click here for online booking!
+              </a>
+            </div>
+          </div>
+        )}
 
         {card.details.split("\n").map((line, index) => (
           <span key={index} className="text-gray-600">
@@ -205,7 +267,10 @@ function CardDetails({ data }) {
           </span>
         ))}
 
-        <a href={card.source} target="_blank" rel="noopener noreferrer">{`For more details please refer to: `}<span  className="underline">{card.source}</span></a>
+        <a href={card.source} target="_blank" rel="noopener noreferrer">
+          {`For more details please refer to: `}
+          <span className="hover:underline">{card.source}</span>
+        </a>
       </article>
     </div>
   );

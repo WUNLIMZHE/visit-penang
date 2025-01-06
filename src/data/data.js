@@ -9,8 +9,9 @@ const events = [
     details: "Sze Chuan Chicken in Chili Oil (口水鸡), often translated as \"Mouthwatering Chicken,\" is a beloved dish from Sichuan cuisine that perfectly showcases the region's signature flavors. The dish features tender, poached chicken bathed in a vibrant, aromatic chili oil sauce. The sauce is infused with the signature heat of Sichuan peppercorns, offering a delightful numbing spiciness balanced with tangy vinegar and savory seasonings. Garnished with fresh herbs, sesame seeds, and often a sprinkle of crushed peanuts, this dish is a feast for the senses, boasting bold, authentic flavors and an enticing aroma. \nWhat sets Sze Chuan Chicken in Chili Oil apart is its unique serving style and refreshing character. Unlike many spicy dishes served hot, Sze Chuan Chicken in Chili Oil is served cold, offering a contrast that highlights the complexity of its flavors. Each bite delivers a harmonious blend of textures—from the smoothness of the chicken to the slight crunch of the garnishes—and a lingering, mouthwatering sensation from the chili oil. This dish is a quintessential example of Sichuan cuisine’s mastery in combining heat, flavor, and aroma into an unforgettable culinary experience.",
     img: "/01koushuiji.webp",
     alt: "Sze Chuan Chicken in Chili Oil image",
-    source: "https://www.kenhuntfood.com/2023/09/wan-jia-dumpling-house-elit-avenue.html",
-    category: "food"
+    source:
+      "https://www.kenhuntfood.com/2023/09/wan-jia-dumpling-house-elit-avenue.html",
+    category: "food",
   },
   {
     id: 2,
@@ -22,47 +23,51 @@ const events = [
     details: "These handmade boiled dumplings feature a delicate filling of egg and chives, skillfully balanced to bring out their natural flavors. The dumpling skin is slightly thick, providing a satisfying bite that complements the soft, flavorful filling. Served with aromatic black vinegar on the side, the tangy dipping sauce enhances the overall taste, making each bite a simple yet comforting delight.",
     img: "/02boiled-dumplings.webp",
     alt: "Boiled Dumplings",
-    source: "https://www.kenhuntfood.com/2023/09/wan-jia-dumpling-house-elit-avenue.html",
-    category: "food"
+    source:
+      "https://www.kenhuntfood.com/2023/09/wan-jia-dumpling-house-elit-avenue.html",
+    category: "food",
   },
   {
     id: 3,
     name: "Asam Laksa",
     price: "5-10 per bowl",
-    location: "Nan Guang Kopitiam, 67 Main Road, 11000 Balik Pulau, Pulau Pinang, Malaysia",
+    location:
+      "Nan Guang Kopitiam, 67 Main Road, 11000 Balik Pulau, Pulau Pinang, Malaysia",
     rating: "4.0",
     description: "Enjoy the authentic taste of Penang laksa, a tangy, flavorful dish with tamarind broth, fresh herbs, rice noodles, and a perfect balance of sweet, sour, and spicy notes.",
     details: "It is a well-known eatery in Penang, celebrated for its signature dish, Penang Asam Laksa. This flavorful dish features thick rice noodles, poached fish, and fresh vegetables like sliced cucumber, pineapple, and onions, all combined in a tangy fish broth. The warm and welcoming ambiance, paired with affordable pricing, makes it a must-visit destination for locals and tourists seeking an authentic taste of Penang.",
     img: "/03kim-laksa.webp",
     alt: "Asam Laksa",
     source: "https://kim-laksa-balik-pulau.wheree.com/",
-    category: "food"
+    category: "food",
   },
   {
     id: 4,
     name: "Nutmeg Juice",
     price: "3",
-    location: "Available at local eateries in Balik Pulau, Penang e.g. Nan Guang Kopitiam, 67 Main Road, 11000 Balik Pulau, Pulau Pinang, Malaysia",
+    location:
+      "Available at local eateries in Balik Pulau, Penang e.g. Nan Guang Kopitiam, 67 Main Road, 11000 Balik Pulau, Pulau Pinang, Malaysia",
     rating: "4.5",
     description: "Refreshing juice made from the fruit of the nutmeg tree.",
     details: "Nutmeg juice is a popular and refreshing beverage in Penang, especially in Balik Pulau. Made from the fleshy fruit of the nutmeg tree, this drink has a slightly tangy and aromatic flavor that is both unique and invigorating. It's commonly enjoyed alongside local dishes like laksa, offering a taste of Penang's rich culinary heritage.",
     img: "/04nutmeg-juice.webp",
     alt: "Nutmeg Juice",
     source: "http://www.conytan.com/2016/05/balik-pulau-laksa-kim-laksa.html",
-    category: "food"
+    category: "food",
   },
   {
     id: 5,
     name: "Char Koay Teow",
     price: "4.70",
-    location: "Corner of Kimberly and Cinta Street, Penang (Sin Guat Keong coffee shop)",
+    location:
+      "Corner of Kimberly and Cinta Street, Penang (Sin Guat Keong coffee shop)",
     rating: "4.5",
     description: "A flavorful rice noodle dish with shrimp, a popular local favorite.",
     details: "Char Koay Teow is a beloved Malaysian street food, known for its stir-fried rice noodles, shrimp, and a savory blend of flavors. Each stall adds its own touch, but the version at the hawker stall on the corner of Kimberly and Cintra Street is considered the best. The noodles are wok-fried with a combination of soy sauce, garlic, and a variety of spices, delivering a smoky, rich taste that is simply irresistible.",
     img: "/05char-kuey-teow.webp",
     alt: "Char Koay Teow",
     source: "https://rooftopantics.com/penang-food-guide-eat/",
-    category: "food"
+    category: "food",
   },
   {
     id: 6,
@@ -74,8 +79,9 @@ const events = [
     details: "Nasi Kandar is a traditional northern Malay dish featuring steamed rice served with a variety of rich curry sauces and meats, chicken, or fish, often all at once. A local favorite is Nasi Kandar Line Clear, a restaurant open 24/7 that has become famous for its authentic offerings.To enjoy this dish, simply get in line, point at your preferred items, and dive into the flavorful meal.",
     img: "/06nasi-kandar.webp",
     alt: "Nasi Kandar",
-    source: "https://www.tripadvisor.com.my/Restaurant_Review-g298303-d3858927-Reviews-Nasi_Kandar_Line_Clear-George_Town_Penang_Island_Penang.html",
-    category: "food"
+    source:
+      "https://www.tripadvisor.com.my/Restaurant_Review-g298303-d3858927-Reviews-Nasi_Kandar_Line_Clear-George_Town_Penang_Island_Penang.html",
+    category: "food",
   },
   {
     id: 7,
@@ -206,7 +212,8 @@ const events = [
   {
     id: 16,
     name: "The Habitat",
-    price: "Standard Entrance Pass: RM60, Family Combo: RM60, Forest Bathing: RM100",
+    price:
+      "Standard Entrance Pass: RM60, Family Combo: RM60, Forest Bathing: RM100",
     location: "C7G9+69, Bukit Bendera, 11300 Bukit Bendera, Pulau Pinang",
     openingHours: 
     `Opens Daily Monday to Friday 9:00am - 7:00pm (Last entry at 5:30pm)
@@ -217,13 +224,15 @@ const events = [
     img: "/16the-habitat.webp",
     alt: "The Habitat",
     source: "https://thehabitat.my/our-story/",
-    category: "tourist-spot"
+    category: "tourist-spot",
   },
   {
     id: 17,
     name: "Escape Penang",
-    price: "0-3 Years: Free admission, 4-12 Years: RM86-RM112, 13-60 Years: RM129-RM184, 60+ Years: Free admission",
-    location: "828, Jalan Teluk Bahang, Teluk Bahang, 11050, Pulau Pinang, Malaysia.",
+    price:
+      "0-3 Years: Free admission, 4-12 Years: RM86-RM112, 13-60 Years: RM129-RM184, 60+ Years: Free admission",
+    location:
+      "828, Jalan Teluk Bahang, Teluk Bahang, 11050, Pulau Pinang, Malaysia.",
     openingHours: `Opens Daily 10am-6pm`,
     rating: "4.6",
     description: "Thrilling adventures, water park fun, and eco-friendly activities for all ages.",
@@ -231,13 +240,14 @@ const events = [
     img: "/17escape-penang.webp",
     alt: "Escape Penang",
     source: "https://www.escape.my/",
-    category: "tourist-spot"
+    category: "tourist-spot",
   },
   {
     id: 18,
     name: "Entopia",
     price: "Malaysians: RM58.80, International Tourists: RM67.50",
-    location: "No 830, Jalan Teluk Bahang, Teluk Bahang, 11050 Penang, Malaysia",
+    location:
+      "No 830, Jalan Teluk Bahang, Teluk Bahang, 11050 Penang, Malaysia",
     openingHours: `Opens daily 9am-6pm`,
     rating: "4.4",
     description: "A vibrant haven of butterflies, lush gardens, and interactive nature exhibits.",
@@ -245,14 +255,16 @@ const events = [
     img: "/18entopia.webp",
     alt: "Entopia",
     source: "https://www.entopia.com/",
-    category: "tourist-spot"
+    category: "tourist-spot",
   },
 
   {
     id: 19,
     name: "Penang War Museum",
-    price: "Malaysians: RM22.00 per adult & RM12.00 per child, Foreigners: RM38.00 per adult & RM20.00 per child",
-    location: "Lot 1350, Mukim 12, Daerah Barat Daya, Batu Maung, 11960, Penang, Malaysia.",
+    price:
+      "Malaysians: RM22.00 per adult & RM12.00 per child, Foreigners: RM38.00 per adult & RM20.00 per child",
+    location:
+      "Lot 1350, Mukim 12, Daerah Barat Daya, Batu Maung, 11960, Penang, Malaysia.",
     openingHours: `Opens daily 9.00am - 6.00pm`,
     rating: "4.3",
     description: "Discover Penang\'s wartime history through immersive exhibits at the Penang War Museum.",
@@ -260,7 +272,7 @@ const events = [
     img: "/19war-museum.webp",
     alt: "Penang War Museum",
     source: "https://mypenang.gov.my/all/my-stories/118/?lg=en",
-    category: "tourist-spot"
+    category: "tourist-spot",
   },
 
   {
@@ -351,9 +363,10 @@ const events = [
     details: "Cheong Fatt Tze – The Blue Mansion is a beautifully restored heritage building in the heart of George Town, Penang. This iconic blue mansion offers guests an extraordinary experience with its mix of traditional architecture and modern comforts. Originally the home of a prominent merchant, the mansion is now a boutique hotel that offers a glimpse into Penang’s rich history. Guests can explore the mansion’s stunning interior, enjoy delicious local cuisine, and immerse themselves in the unique cultural heritage of Penang. With its combination of elegance, history, and personalized service, this hotel promises an unforgettable stay.",
     img: "/25cheong-fatt-tze.webp",
     alt: "Cheong Fatt Tze – The Blue Mansion",
-    booking: "https://www.booking.com/hotel/my/cheong-fatt-tze-the-blue-mansion.en-gb.html",
+    booking:
+      "https://www.booking.com/hotel/my/cheong-fatt-tze-the-blue-mansion.en-gb.html",
     source: "https://www.cheongfatttzemansion.com/",
-    category: "hotel"
+    category: "hotel",
   },
   {
     id: 26,
@@ -364,9 +377,10 @@ const events = [
     details: "Bayview Beach Resort is a four-star property located on Batu Ferringhi Beach in Penang. It features comfortable rooms with sea or garden views, multiple dining options, a swimming pool, spa services, and recreational activities. The resort is ideal for families, couples, and business travelers seeking a serene getaway with modern amenities. Its strategic location provides easy access to local attractions, including the Batu Ferringhi Night Market and Penang National Park. Location: Batu Ferringhi, Penang, Malaysia.",
     img: "/26bayview-resort.webp",
     alt: "Bayview Beach Resort",
-    booking: "https://www.booking.com/hotel/my/bayviewbeach.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734852140&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
+    booking:
+      "https://www.booking.com/hotel/my/bayviewbeach.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734852140&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
     source: "https://bbr.bayviewhotels.com/",
-    category: "hotel"
+    category: "hotel",
   },
   {
     id: 27,
@@ -377,9 +391,10 @@ const events = [
     details: "By The Sea Penang is a four-star property located along the sandy shores of Batu Ferringhi in Penang. The property features spacious, well-equipped suites with private balconies overlooking the sea or lush gardens. Guests can enjoy direct beach access, an outdoor pool, a fitness center, and nearby attractions such as local eateries and the vibrant Batu Ferringhi Night Market. This property is ideal for families and couples looking for a relaxing retreat in Penang. Location: Batu Ferringhi, Penang, Malaysia. ",
     img: "/27by-the-sea.webp",
     alt: "By The Sea Penang",
-    booking: "https://www.booking.com/hotel/my/by-the-sea-penang-batu-ferringhi.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=7&hpos=7&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734852647&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
+    booking:
+      "https://www.booking.com/hotel/my/by-the-sea-penang-batu-ferringhi.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=7&hpos=7&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734852647&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
     source: "https://www.bytheseapenang.com/",
-    category: "hotel"
+    category: "hotel",
   },
   {
     id: 28,
@@ -390,7 +405,8 @@ const events = [
     details: "G Beach Front Villa is a four-star accommodation situated along the serene Batu Ferringhi Beach in Penang. This villa provides an exclusive stay with spacious, elegantly designed interiors, private access to the beach, and a garden. Ideal for families and groups, it features modern amenities, including a fully equipped kitchen, a private pool, and a terrace for enjoying the coastal breeze. Guests can explore nearby attractions like the Batu Ferringhi Night Market, local eateries, and Penang’s cultural landmarks while enjoying the comfort and privacy of this beachfront heaven.",
     img: "/28g-beach-front-villa.webp",
     alt: "G Beach Front Villa",
-    booking: "https://www.booking.com/hotel/my/g-beach-front-villa.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=10&hpos=10&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734853163&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
+    booking:
+      "https://www.booking.com/hotel/my/g-beach-front-villa.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=10&hpos=10&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734853163&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
     source: "https://g-beach-front-villa.penangbeachhotels.com/en/",
     category: "hotel"
   },

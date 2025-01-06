@@ -36,7 +36,7 @@ const CardsLayout = ({ data }) => {
 
   return (
     <div className="flex justify-center data-center min-h-screen">
-      <section className="mt-[128px] grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 justify-data-center">
+      <section className="mt-[128px] grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 justify-data-center mb-10">
         {data.map(createCard)}
       </section>
     </div>
