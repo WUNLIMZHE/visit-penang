@@ -1,6 +1,7 @@
 // import React from 'react'
 import './Brochure.css'
 import searchGreen from "../../assets/search_iconGreen.png"
+import { Link } from "react-router-dom";
 
 const Brochure = () => {
   return (
@@ -16,7 +17,7 @@ const Brochure = () => {
                 dishes, visit historic places, or simply unwind, Penang is 
                 ready to welcome you. Enjoy your time here!
             </p>
-            <button className='btn'><img src={searchGreen} alt="" />Explore More</button>
+            <Link to="/Food"><button className='btn hover:scale-110 transition-transform duration-300 ease-in-out'><img src={searchGreen} alt="" />Explore More</button></Link>
 
         </div>
     </div>
