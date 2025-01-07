@@ -36,6 +36,16 @@ export default function Dropdown() {
               <span className="fancy-hover relative">Hotels</span>
             </Link>
           </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/wunlimzhe/"
+              className="fancy-hover relative"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contact
+            </a>
+          </li>
         </ul>
       )}
     </>
