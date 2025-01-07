@@ -3,6 +3,7 @@ import Navbar from "../Component/Navbar/Navbar";
 import Brochure from "../Component/Brochure/Brochure";
 import Program from "../Component/Program/Program";
 import Title from "../Component/Title/Title";
+import Gallery from "../Component/Gallery/Gallery"
 import About from "../Component/About/About";
 
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
         <Program />
         <About />
         <Title subTitle="Gallery" title="More about Penang" />
+        <Gallery/>
       </div>
     </>
   );
