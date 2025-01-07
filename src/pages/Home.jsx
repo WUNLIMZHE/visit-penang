@@ -4,6 +4,7 @@ import Brochure from '../Component/Brochure/Brochure'
 import Program from '../Component/Program/Program'
 import Title from '../Component/Title/Title'
 import About from '../Component/About/About'
+import Gallery from '../Component/Gallery/Gallery'
 export default function Home (){
     return(    
         <>
@@ -15,6 +16,7 @@ export default function Home (){
             <About/>
             <Title subTitle='Gallery' title='More about Penang'/>
             </div>
+            <Gallery></Gallery>
         </>
     );
 }
