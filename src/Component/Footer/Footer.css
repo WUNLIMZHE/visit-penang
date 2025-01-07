@@ -1,0 +1,77 @@
+.footer{
+    position: relative;
+    bottom: 0;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    justify-content: space-between;
+    background-color: rgb(3, 78, 65);
+    height: 20rem;
+    color: white;
+    column-gap: 7rem;
+    font-size: 1.2rem;
+    padding-bottom: 4rem;
+}
+
+.promotion .intro{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.promotion{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-left: 2rem;
+}
+
+.promotion .subtext{
+    font-size: 1.35rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+.promotion input{
+    display: inline;
+    margin-right: 1rem;
+    width: 25rem;
+}
+
+.promotion .send-email{
+    background-color: green;
+    text-align: center;
+    border-radius: 10px;
+    padding: .1rem 1rem;
+}
+
+.promotion #tickbox{
+    width: 13px;
+}
+
+.contacts{
+    padding: 3rem 0;
+}
+
+.contacts .item{
+    margin: 0.4rem 0;
+}
+
+.contacts .item span{
+    margin-right: 1rem;
+}
+
+.contacts .item a{
+    text-decoration: underline;
+}
+
+.copyright{
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(1, 49, 41);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    height: 3.25rem;
+}
+

@@ -1,6 +1,5 @@
 // import Navbar from "../components/Navbar";
 import Navbar from "../Component/Navbar/Navbar";
-import Footer from '../Component/Footer';
 import CardDetails from "../Component/CardDetails";
 import { useLocation } from 'react-router-dom';
 

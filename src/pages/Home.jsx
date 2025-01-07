@@ -5,6 +5,7 @@ import Program from "../Component/Program/Program";
 import Title from "../Component/Title/Title";
 import Gallery from "../Component/Gallery/Gallery"
 import About from "../Component/About/About";
+import Footer from "../Component/Footer/Footer";
 
 export default function Home() {
   const titleRef = useRef(null);
@@ -35,6 +36,7 @@ export default function Home() {
         <Title subTitle="Gallery" title="More about Penang" />
         <Gallery/>
       </div>
+      <Footer/>
     </>
   );
 }
