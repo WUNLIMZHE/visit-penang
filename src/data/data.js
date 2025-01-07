@@ -11,6 +11,7 @@ const events = [
     alt: "Sze Chuan Chicken in Chili Oil image",
     source:
       "https://www.kenhuntfood.com/2023/09/wan-jia-dumpling-house-elit-avenue.html",
+    phone: "011-268 6581",
     category: "food",
   },
   {
@@ -25,48 +26,49 @@ const events = [
     alt: "Boiled Dumplings",
     source:
       "https://www.kenhuntfood.com/2023/09/wan-jia-dumpling-house-elit-avenue.html",
+    phone: "011-268 6581",
     category: "food",
   },
   {
     id: 3,
     name: "Asam Laksa",
     price: "5-10 per bowl",
-    location:
-      "Nan Guang Kopitiam, 67 Main Road, 11000 Balik Pulau, Pulau Pinang, Malaysia",
+    location: "Nan Guang Kopitiam, 67 Main Road, 11000 Balik Pulau, Pulau Pinang, Malaysia",
     rating: "4.0",
     description: "Enjoy the authentic taste of Penang laksa, a tangy, flavorful dish with tamarind broth, fresh herbs, rice noodles, and a perfect balance of sweet, sour, and spicy notes.",
     details: "It is a well-known eatery in Penang, celebrated for its signature dish, Penang Asam Laksa. This flavorful dish features thick rice noodles, poached fish, and fresh vegetables like sliced cucumber, pineapple, and onions, all combined in a tangy fish broth. The warm and welcoming ambiance, paired with affordable pricing, makes it a must-visit destination for locals and tourists seeking an authentic taste of Penang.",
     img: "/03kim-laksa.webp",
     alt: "Asam Laksa",
     source: "https://kim-laksa-balik-pulau.wheree.com/",
+    phone: "011-388 4943",
     category: "food",
   },
   {
     id: 4,
     name: "Nutmeg Juice",
     price: "3",
-    location:
-      "Available at local eateries in Balik Pulau, Penang e.g. Nan Guang Kopitiam, 67 Main Road, 11000 Balik Pulau, Pulau Pinang, Malaysia",
+    location: "Available at local eateries in Balik Pulau, Penang e.g. Nan Guang Kopitiam, 67 Main Road, 11000 Balik Pulau, Pulau Pinang, Malaysia",
     rating: "4.5",
     description: "Refreshing juice made from the fruit of the nutmeg tree.",
     details: "Nutmeg juice is a popular and refreshing beverage in Penang, especially in Balik Pulau. Made from the fleshy fruit of the nutmeg tree, this drink has a slightly tangy and aromatic flavor that is both unique and invigorating. It's commonly enjoyed alongside local dishes like laksa, offering a taste of Penang's rich culinary heritage.",
     img: "/04nutmeg-juice.webp",
     alt: "Nutmeg Juice",
     source: "http://www.conytan.com/2016/05/balik-pulau-laksa-kim-laksa.html",
+    phone: "011-388 4943",
     category: "food",
   },
   {
     id: 5,
     name: "Char Koay Teow",
     price: "4.70",
-    location:
-      "Corner of Kimberly and Cinta Street, Penang (Sin Guat Keong coffee shop)",
+    location: "Corner of Kimberly and Cinta Street, Penang (Sin Guat Keong coffee shop)",
     rating: "4.5",
     description: "A flavorful rice noodle dish with shrimp, a popular local favorite.",
     details: "Char Koay Teow is a beloved Malaysian street food, known for its stir-fried rice noodles, shrimp, and a savory blend of flavors. Each stall adds its own touch, but the version at the hawker stall on the corner of Kimberly and Cintra Street is considered the best. The noodles are wok-fried with a combination of soy sauce, garlic, and a variety of spices, delivering a smoky, rich taste that is simply irresistible.",
     img: "/05char-kuey-teow.webp",
     alt: "Char Koay Teow",
     source: "https://rooftopantics.com/penang-food-guide-eat/",
+    phone: "",
     category: "food",
   },
   {
@@ -81,6 +83,7 @@ const events = [
     alt: "Nasi Kandar",
     source:
       "https://www.tripadvisor.com.my/Restaurant_Review-g298303-d3858927-Reviews-Nasi_Kandar_Line_Clear-George_Town_Penang_Island_Penang.html",
+    phone: "04-261 4440",
     category: "food",
   },
   {
@@ -94,6 +97,7 @@ const events = [
     img: "/07big-bowl-ramen.webp",
     alt: "Big Bowl Ramen",
     source: "https://www.placesandfoods.com/2017/09/penang-big-bowl-ramen-noodle-chew-jetty.html",
+    phone: "012-853 9119",
     category: "food"
   },
 
@@ -108,6 +112,7 @@ const events = [
     img: "/08hokkien-mee.webp",
     alt: "Hokkien Mee",
     source: "https://guide.michelin.com/my/en/article/dining-out/a-day-in-the-life-with-penang-s-888-hokkien-mee",
+    phone: "",
     category: "food"
   },
 
@@ -122,6 +127,7 @@ const events = [
     img: "/09roti-canai.webp",
     alt: "Roti Canai",
     source: "https://foodcrush.com.my/penang/profile/roti-canai-gemas-road",
+    phone: "016-434 5786",
     category: "food"
   },
 
@@ -136,6 +142,7 @@ const events = [
     img: "/10nasi-lemak.webp",
     alt: "Nasi Lemak",
     source: "https://www.tripadvisor.com.sg/Restaurant_Review-g298303-d1159847-Reviews-Sri_Weld_Food_Court-George_Town_Penang_Island_Penang.html",
+    phone: "012-303 7400",
     category: "food"
   },
 
@@ -150,6 +157,7 @@ const events = [
     img: "/11cendol.webp",
     alt: "Teochew Cendol",
     source: "https://www.huislaw.com/2015/05/penang-road-famous-teochew-chendul/#google_vignette",
+    phone: "",
     category: "food"
   },
 
@@ -164,6 +172,7 @@ const events = [
     img: "/12chicken-rice.webp",
     alt: "Penang Hainanese Chicken Rice",
     source: "https://www.hungryonion.org/t/penang-hengs-sri-bahari-hainan-chicken-rice/36723",
+    phone: "017-461 3506",
     category: "food"
   },
 
@@ -178,6 +187,7 @@ const events = [
     img: "/13curry-fish-head.webp",
     alt: "Penang Fish Head Curry",
     source: "https://penangfoodie.com/top-10-places-to-eat-at-gurney-drive-penang-2019-guide/#google_vignette",
+    phone: "04-227 9086",
     category: "food"
   },
 
@@ -192,6 +202,7 @@ const events = [
     img: "/14beehoon-fish-head.webp",
     alt: "Penang Fish Head Curry",
     source: "https://pureglutton.com/fish-noodles-wong-chau-jun-restaurant-penang",
+    phone: "012-555 9046",
     category: "food"
   },
 
@@ -206,14 +217,14 @@ const events = [
     img: "/15grilled-fish.webp",
     alt: "Grilled Fish",
     source: "https://www.foodadvisor.my/penang/east-coast-bbq-george-town",
+    phone: "",
     category: "food"
   },
 
   {
     id: 16,
     name: "The Habitat",
-    price:
-      "Standard Entrance Pass: RM60, Family Combo: RM60, Forest Bathing: RM100",
+    price:  `Standard Entrance Pass: RM60, Family Combo: RM60, Forest Bathing: RM100`,
     location: "C7G9+69, Bukit Bendera, 11300 Bukit Bendera, Pulau Pinang",
     openingHours: 
     `Opens Daily Monday to Friday 9:00am - 7:00pm (Last entry at 5:30pm)
@@ -224,15 +235,18 @@ const events = [
     img: "/16the-habitat.webp",
     alt: "The Habitat",
     source: "https://thehabitat.my/our-story/",
+    phone: "019-645 7741",
     category: "tourist-spot",
   },
   {
     id: 17,
     name: "Escape Penang",
     price:
-      "0-3 Years: Free admission, 4-12 Years: RM86-RM112, 13-60 Years: RM129-RM184, 60+ Years: Free admission",
-    location:
-      "828, Jalan Teluk Bahang, Teluk Bahang, 11050, Pulau Pinang, Malaysia.",
+      `0-3 Years: Free admission, 
+      4-12 Years: RM86-RM112, 
+      13-60 Years: RM129-RM184, 
+      60+ Years: Free admission`,
+    location:  "828, Jalan Teluk Bahang, Teluk Bahang, 11050, Pulau Pinang, Malaysia.",
     openingHours: `Opens Daily 10am-6pm`,
     rating: "4.6",
     description: "Thrilling adventures, water park fun, and eco-friendly activities for all ages.",
@@ -240,12 +254,14 @@ const events = [
     img: "/17escape-penang.webp",
     alt: "Escape Penang",
     source: "https://www.escape.my/",
+    phone: "017-797 7529",
     category: "tourist-spot",
   },
   {
     id: 18,
     name: "Entopia",
-    price: "Malaysians: RM58.80, International Tourists: RM67.50",
+    price: `Malaysians: RM58.80, 
+    International Tourists: RM67.50`,
     location:
       "No 830, Jalan Teluk Bahang, Teluk Bahang, 11050 Penang, Malaysia",
     openingHours: `Opens daily 9am-6pm`,
@@ -255,6 +271,7 @@ const events = [
     img: "/18entopia.webp",
     alt: "Entopia",
     source: "https://www.entopia.com/",
+    phone: "04-888 8111",
     category: "tourist-spot",
   },
 
@@ -262,7 +279,8 @@ const events = [
     id: 19,
     name: "Penang War Museum",
     price:
-      "Malaysians: RM22.00 per adult & RM12.00 per child, Foreigners: RM38.00 per adult & RM20.00 per child",
+      `Malaysians: RM22.00 per adult & RM12.00 per child, 
+      Foreigners: RM38.00 per adult & RM20.00 per child`,
     location:
       "Lot 1350, Mukim 12, Daerah Barat Daya, Batu Maung, 11960, Penang, Malaysia.",
     openingHours: `Opens daily 9.00am - 6.00pm`,
@@ -272,13 +290,15 @@ const events = [
     img: "/19war-museum.webp",
     alt: "Penang War Museum",
     source: "https://mypenang.gov.my/all/my-stories/118/?lg=en",
+    phone: "016-421 3606",
     category: "tourist-spot",
   },
 
   {
     id: 20,
     name: "Penang Bird Park",
-    price: "Malaysians: RM35.82, International tourists: RM42.77",
+    price: `Malaysians: RM35.82, 
+    International tourists: RM42.77`,
     location: "Jalan Todak Seberang Jaya, 13700 Perai, Penang",
     openingHours: `Opens daily 9.00am - 6.00pm`,
     rating: "4.5",
@@ -287,6 +307,7 @@ const events = [
     img: "/20bird-park.webp",
     alt: "Penang Bird Park",
     source: "https://www.penangbirdpark.com.my",
+    phone: "04-399 1899",
     category: "tourist-spot"
   },
 
@@ -306,13 +327,15 @@ const events = [
     img: "/21tech-dome.webp",
     alt: "Tech Dome Penang",
     source: "https://www.techdomepenang.org",
+    phone: "04-262 6663",
     category: "tourist-spot"
   },
 
   {
     id: 22,
     name: "Wonderfood Museum",
-    price: "Malaysians: RM17.91, International Travellers: RM25.86",
+    price: `Malaysians: RM17.91, 
+    International Travellers: RM25.86`,
     location: "49, Lebuh Pantai, George Town, 10200 George Town, Pulau Pinang, Malaysia",
     openingHours: `Opens daily 9.00am - 6.00pm`,
     rating: "4.6",
@@ -321,6 +344,7 @@ const events = [
     img: "/22wonderfood-museum.webp",
     alt: "Wonderfood Museum",
     source: "https://www.facebook.com/Wonderfoodmuseum",
+    phone: "04-251 9095",
     category: "tourist-spot"
   },
 
@@ -336,13 +360,15 @@ const events = [
     img: "/23little-india.webp",
     alt: "Little India",
     source: "https://penang.attractionsinmalaysia.com/Little-India.php",
+    phone: "",
     category: "tourist-spot"
   },
 
   {
     id: 24,
     name: "Penang 3D Trick Art",
-    price: "Malaysians: RM17.30, International Tourists: RM21.10",
+    price: `Malaysians: RM17.30, 
+    International Tourists: RM21.10`,
     location: "10, Lebuh Penang, George Town, 10200 George Town, Pulau Pinang, Malaysia",
     openingHours: `Opens daily 9.00am - 6.00pm`,
     rating: "4.3",
@@ -351,6 +377,7 @@ const events = [
     img: "/24trick-art3d.webp",
     alt: "Penang 3D Trick Art",
     source: "https://penangtrickart.com",
+    phone: "04-263 1628",
     category: "tourist-spot"
   },
 
@@ -366,6 +393,8 @@ const events = [
     booking:
       "https://www.booking.com/hotel/my/cheong-fatt-tze-the-blue-mansion.en-gb.html",
     source: "https://www.cheongfatttzemansion.com/",
+    phone: `04-262 0006,
+            04-262 5289`,
     category: "hotel",
   },
   {
@@ -380,6 +409,7 @@ const events = [
     booking:
       "https://www.booking.com/hotel/my/bayviewbeach.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734852140&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
     source: "https://bbr.bayviewhotels.com/",
+    phone: "04-886 1111",
     category: "hotel",
   },
   {
@@ -394,6 +424,7 @@ const events = [
     booking:
       "https://www.booking.com/hotel/my/by-the-sea-penang-batu-ferringhi.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=7&hpos=7&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734852647&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
     source: "https://www.bytheseapenang.com/",
+    phone: "019-447 0088",
     category: "hotel",
   },
   {
@@ -408,6 +439,7 @@ const events = [
     booking:
       "https://www.booking.com/hotel/my/g-beach-front-villa.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&dest_id=-2403097&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=10&hpos=10&nflt=class%3D4&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1734853163&srpvid=71f033cf5a3402b1&type=total&ucfs=1&",
     source: "https://g-beach-front-villa.penangbeachhotels.com/en/",
+    phone: "012-966 0917",
     category: "hotel"
   },
 
@@ -422,6 +454,7 @@ const events = [
     alt: "Ascott Gurney Penang",
     booking: "https://www.booking.com/hotel/my/the-gurney-resort-amp-residences.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&all_sr_blocks=0_0_2_0_0&checkin=2024-12-23&checkout=2024-12-24&dest_id=-2403065&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=0_0_2_0_0&hpos=1&matching_block_id=0_0_2_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=0_0_2_0_0__73553&srepoch=1734853463&srpvid=5f4c3667ff9f034d&type=total&ucfs=1&",
     source: "https://gurney-hotel.com.my/index.htm",
+    phone: "04-370 7000",
     category: "hotel"
   },
 
@@ -436,6 +469,7 @@ const events = [
     alt: "Lyf Georgetown Penang",
     booking: "https://www.booking.com/hotel/my/lyf-georgetown-penang.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&all_sr_blocks=1268235702_399882355_0_0_0_716630&checkin=2024-12-23&checkout=2024-12-24&dest_id=-2403065&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=2&highlighted_blocks=1268235702_399882355_0_0_0_716630&hpos=2&matching_block_id=1268235702_399882355_0_0_0_716630&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=1268235702_399882355_0_0_0_716630_38232&srepoch=1734853680&srpvid=5f4c3667ff9f034d&type=total&ucfs=1&",
     source: "https://smartdory.com/2024/11/lyf-georgetown-penang/",
+    phone: "04-373 9910",
     category: "hotel"
   },
 
@@ -450,6 +484,7 @@ const events = [
     alt: "Sunway Georgetown Penang",
     booking: "https://www.booking.com/hotel/my/sunway-georgetown-penang.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&all_sr_blocks=2576509_200856572_0_2_0_522757&checkin=2024-12-23&checkout=2024-12-24&dest_id=-2403065&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=7&highlighted_blocks=2576509_200856572_0_2_0_522757&hpos=7&matching_block_id=2576509_200856572_0_2_0_522757&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=2576509_200856572_0_2_0_522757_29780&srepoch=1734853840&srpvid=5f4c3667ff9f034d&type=total&ucfs=1&",
     source: "https://www.sunwayhotels.com/sunway-georgetown/",
+    phone: "04-229 9988",
     category: "hotel"
   },
 
@@ -464,6 +499,7 @@ const events = [
     alt: "Mercure Penang Beach",
     booking: "https://www.booking.com/hotel/my/mercure-penang-beach.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&all_sr_blocks=58027808_217788403_2_2_0_560973&checkin=2024-12-23&checkout=2024-12-24&dest_id=-2403065&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=11&highlighted_blocks=58027808_217788403_2_2_0_560973&hpos=11&matching_block_id=58027808_217788403_2_2_0_560973&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=58027808_217788403_2_2_0_560973_52800&srepoch=1734854439&srpvid=5f4c3667ff9f034d&type=total&ucfs=1&",
     source: "https://all.accor.com/hotel/B4R7/index.en.shtml?utm_source=Bing&utm_medium=cpc&utm_campaign=ppc-mer-mar-msn-my-en-my-exa-sear-my&utm_term=mar&utm_content=my-en-MY-V193063&msclkid=3ea62df1e13e14a492844a9626833b8c",
+    phone: "04-371 8888",
     category: "hotel"
   },
 
@@ -478,6 +514,7 @@ const events = [
     alt: "The George Hotel, George Town",
     booking: "https://www.booking.com/hotel/my/the-george-george-town-penang.en-gb.html?aid=1610833&label=penang-_01%2A27QbvAbnOelDrBHKxwS541060665775%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-40892196942%3Alp9066696%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTiRJUvwM0AZLEcK3RQ9LlA&sid=d83383c04ce4e3fdd7350250e2f64e92&all_sr_blocks=909788403_401771671_0_2_0_536160&checkin=2024-12-23&checkout=2024-12-24&dest_id=-2403065&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=15&highlighted_blocks=909788403_401771671_0_2_0_536160&hpos=15&matching_block_id=909788403_401771671_0_2_0_536160&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=909788403_401771671_0_2_0_536160_72250&srepoch=1734854708&srpvid=5f4c3667ff9f034d&type=total&ucfs=1&",
     source: "https://thegeorge.com.my/",
+    phone: "04-291 9000",
     category: "hotel"
   },
 
@@ -492,6 +529,7 @@ const events = [
     alt: "The First Rooftop Infinity Sky Pool & Beacon",
     booking: "https://www.booking.com/hotel/my/the-first-rooftop-infinity-sky-pool-beacon-executive-suite-george-town.en-gb.html",
     source: "https://www.sniffhotels.com/my/en/hotel/the-first-rooftop-infinity-sky-pool-beacon-executive-suite-george-town",
+    phone: "012-462 2919",
     category: "hotel"
   },
 
@@ -506,6 +544,7 @@ const events = [
     alt: "Carnarvon House",
     booking: "https://www.booking.com/hotel/my/carnarvon-house.en-gb.html",
     source: "https://carnarvon-house.penangbeachhotels.com/en/",
+    phone: "012-520 3304",
     category: "hotel"
   },
 
@@ -520,6 +559,7 @@ const events = [
     alt: "Gurney Seaview Condo with Balcony",
     booking: "https://www.booking.com/hotel/my/gurney-seaview-condo-with-balcony.en-gb.html",
     source: "https://gurney-seaview-condo-with-balcony.georgetown-hotels.org/en/",
+    phone: "017-448 0117",
     category: "hotel"
   },
 
@@ -534,6 +574,7 @@ const events = [
     alt: "Eastern & Oriental Hotel",
     booking: "https://www.booking.com/hotel/my/eastern-oriental.en-gb.html",
     source: "https://www.eohotels.com/",
+    phone: "04-222 2000",
     category: "hotel"
   },
 
@@ -548,6 +589,7 @@ const events = [
     alt: "The Boutique Residence Georgetown",
     booking: "https://www.booking.com/hotel/my/the-boutique-residence-georgetown.en-gb.html",
     source: "https://the-boutique-residence-hotel.penanghotels.org/en/",
+    phone: "019-225 8033",
     category: "hotel"
   },
 
@@ -562,13 +604,16 @@ const events = [
     alt: "TG Kelawai",
     booking: "https://www.booking.com/hotel/my/g-kelawai.en-gb.html?aid=356980&label=gog235jc-1DCAsooQFCCWcta2VsYXdhaUgzWANooQGIAQGYAQm4ARfIAQzYAQPoAQGIAgGoAgO4ArGd77sGwAIB0gIkOGMzMjU5YjktNTY1MS00ZmU0LThjOTMtYmZkNzI0ZWExZTJm2AIE4AIB&sid=2e71c2f6d0703f6373185785648d88eb&dist=0&group_adults=2&group_children=0&keep_landing=1&no_rooms=1&sb_price_type=total&type=total&",
     source: "https://kelawai.ghotel.com.my/",
+    phone: "04-238 0000",
     category: "hotel"
   },
 
   {
     id: 40,
     name: "Pinang Peranakan Museum",
-    price: "Adults : RM25.00, Children (6-12 yrs) : RM 12.00, Junior Children (below 6) : Free",
+    price: `Adults : RM25.00, 
+    Children (6-12 yrs) : RM 12.00, 
+    Junior Children (below 6) : Free`,
     location: "29, Church Street, 10200 Penang, Malaysia.",
     openingHours: `Monday to Sunday including Public Holidays from 9:30 am to 5 pm`,
     rating: "4.5",
@@ -577,13 +622,15 @@ const events = [
     img: "/40penang-peranakan.webp",
     alt: "Pinang Peranakan Museum",
     source: "http://www.pinangperanakanmansion.com.my",
+    phone: "04-264 2929",
     category: "tourist-spot"
   },
 
   {
     id: 41,
     name: "Ghost Museum Penang",
-    price: "Malaysians: RM14.03, International tourists: RM21.07",
+    price: `Malaysians: RM14.03, 
+    International tourists: RM21.07`,
     location: "57, Lebuh Melayu, George Town, 10300 George Town, Pulau Pinang, Malaysia",
     openingHours: `Monday to Sunday from 10.00am to 7.00pm`,
     rating: "3.5",
@@ -592,6 +639,7 @@ const events = [
     img: "/41ghost-museum.webp",
     alt: "Ghost Museum Penang",
     source: "https://www.facebook.com/ghostmuseumpenang57",
+    phone: "04-261 2352",
     category: "tourist-spot"
   },
 
@@ -608,6 +656,7 @@ const events = [
     img: "/42han-jiang-teochew.webp",
     alt: "Han Jiang Ancestral Temple",
     source: "https://mypenang.gov.my/culture-heritage/directory/406/?lg=en ",
+    phone: "04-262 5629",
     category: "tourist-spot"
   },
 
@@ -623,6 +672,7 @@ const events = [
     img: "/43guanyin.webp",
     alt: "Kuan Yin Temple",
     source: "https://mypenang.gov.my/culture-heritage/directory/827/?lg=en ",
+    phone: "04-226 2645",
     category: "tourist-spot"
   },
 
@@ -638,13 +688,15 @@ const events = [
     img: "/44asia-camera-museum.webp",
     alt: "Asia Camera Museum",
     source: "https://www.asiacameramuseum.com",
+    phone: "011-1859 9878",
     category: "tourist-spot"
   },
 
   {
     id: 45,
     name: "Sun Yat Sen Museum",
-    price: "Adult: RM10, Children aged 12 and below: RM5",
+    price: `Adult: RM10, 
+    Children aged 12 and below: RM5`,
     location: "120 Armenian Street, George Town, 10200, Penang, Malaysia",
     openingHours: `Monday to Sunday 9.00am to 6.00pm`,
     rating: "4.5",
@@ -653,6 +705,7 @@ const events = [
     img: "/45SunYatSen-Museum-Penang.webp",
     alt: "Sun Yat Sen Museum",
     source: "https://mypenang.gov.my/all/directory/392/?lg=en",
+    phone: "016-212 1910",
     category: "tourist-spot"
   },
 
