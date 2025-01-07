@@ -293,7 +293,7 @@ function CardDetails({ data }) {
             </svg>
           </div>
           <div className="grid gap-1 items-center font-bold text-lg content-start">
-            <span>{card.phone}</span>
+            <span>{card.phone === "" ? "(none)" : card.phone}</span>
           </div>
         </div>
 
