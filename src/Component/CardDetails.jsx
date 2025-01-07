@@ -36,8 +36,8 @@ function CardDetails({ data }) {
         <img
           src={card.img}
           alt="Log Off Night 2024 image"
-          className="sm:float-right mx-auto sm:ml-6 sm:mr-0 rounded shadow mb-5"
-          width="360px"
+          className="sm:float-right mx-auto sm:ml-6 sm:mr-0 rounded shadow mb-5 "
+          width={card.category === "tourist-spot" ? "400px" : "360px"}
         />
         <h1 className="mb-3 text-4xl font-bold">{card.name}</h1>
         <br />
@@ -114,9 +114,7 @@ function CardDetails({ data }) {
               <span>Opening Hours:</span>
               <spa className="font-medium text-base">
                 {card.openingHours.split("\n").map((line, index) => (
-                  <span key={index}>
-                    {line}
-                  </span>
+                  <span key={index}>{line}</span>
                 ))}
               </spa>
             </div>
@@ -149,7 +147,7 @@ function CardDetails({ data }) {
           </div>
         </div>
         {card.category !== "hotel" && (
-          <div className="flex gap-x-3 mt-2 mb-5">
+          <div className="flex gap-x-3 mt-2 mb-2">
             <div className="grid gap-1 items-center text-theme-800 content-start mt-1">
               <svg
                 width="1em"
@@ -189,14 +187,22 @@ function CardDetails({ data }) {
             </div>
             <div className="grid gap-1 items-center font-bold text-lg content-start">
               <span>
-                {card.category === "food" && `RM`}
-                {card.price}
+                {card.category === "food" && `RM${card.price}`}
+
+                {card.category === "tourist-spot" &&
+                  (<><span>Ticket price:</span><br />
+                  <span className="font-medium text-base">
+                    {card.price.split("\n").map((line, index) => (
+                      <span key={index}>{line}<br /></span>
+                      
+                    ))}
+                  </span></>)}
               </span>
             </div>
           </div>
         )}
         {card.category === "hotel" && (
-          <div className="flex gap-x-3 mt-2 mb-5">
+          <div className="flex gap-x-3 mt-2 mb-3">
             <div className="grid gap-1 items-center text-theme-800 content-start mt-1">
               <svg
                 width="1em"
@@ -252,12 +258,44 @@ function CardDetails({ data }) {
               </svg>
             </div>
             <div className="grid gap-1 items-center font-bold text-lg content-start">
-              <a className="hover:underline hover:cursor-pointer mt-2" href={card.booking} target="_blank" rel="noopener noreferrer">
+              <a
+                className="hover:underline hover:cursor-pointer mt-2"
+                href={card.booking}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Click here for online booking!
               </a>
             </div>
           </div>
         )}
+
+        <div className="flex gap-x-3 mb-5">
+          <div className="grid gap-1 items-center text-theme-800 content-start mt-1">
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+              className="text-xl"
+              data-icon="communication:phone"
+            >
+              <symbol id="communication:phone">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.72 12.72 12.72 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 11a16 16 0 0 0 6.91 6.91l1.39-1.39a2 2 0 0 1 2.11-.45 12.72 12.72 0 0 0 2.81.7 2 2 0 0 1 1.72 2z"
+                ></path>
+              </symbol>
+              <use xlinkHref="#communication:phone"></use>
+            </svg>
+          </div>
+          <div className="grid gap-1 items-center font-bold text-lg content-start">
+            <span>{card.phone}</span>
+          </div>
+        </div>
 
         {card.details.split("\n").map((line, index) => (
           <span key={index} className="text-gray-600">
