@@ -1,10 +1,16 @@
 // import React from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../Component/Card";
 import PropTypes from "prop-types"; // Import PropTypes
 
 // Layout for rendering food, tourist spots, and hotel cards
 const CardsLayout = ({ data }) => {
+  useEffect(() => {
+    // Scroll to the top of the page on component mount
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures this runs only on mount
+
   const navigate = useNavigate();
 
   function createCard(card) {

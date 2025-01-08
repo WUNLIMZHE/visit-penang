@@ -1,22 +1,22 @@
 // import React from "react";
 import PropTypes from "prop-types";
 
-function Card({onClick, ...props}) {
-
+function Card({ onClick, ...props }) {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:opacity-80 transition flex flex-col cursor-pointer" onClick={() => onClick(props.id)}>
+    <div
+      className="max-w-sm sm:max-w-xs mx-4 md:mx-0 md:max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:opacity-80 transition flex flex-col cursor-pointer"
+      onClick={() => onClick(props.id)}
+    >
       <img
         className="rounded-t-lg object-cover w-full h-[208px]"
         src={props.img}
         alt={props.alt}
       />
       <div className="p-5 flex flex-col flex-grow">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">
+        <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-black">
           {props.name}
         </h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {props.description}
-        </p>
+        <p className="mb-3 font-normal text-gray-700 text-base md:text-base">{props.description}</p>
         <div className="flex gap-x-3">
           <div className="grid gap-1 items-center text-theme-800 content-start mt-1">
             <svg
@@ -35,8 +35,8 @@ function Card({onClick, ...props}) {
               <use xlinkHref="#ai:ci:location"></use>
             </svg>
           </div>
-          <div className="grid gap-1 items-center font-bold text-lg">
-            <span>{props.location}</span>
+          <div className="grid gap-1 items-center font-bold">
+            <span className="text-base md:text-lg">{props.location}</span>
           </div>
         </div>
         <div className="flex gap-x-3 mt-2">
@@ -45,7 +45,7 @@ function Card({onClick, ...props}) {
               width="1em"
               height="1em"
               viewBox="0 0 24 24"
-              className="text-xl"
+              className="text-lg md:text-xl"
               data-icon="rating:star"
             >
               <symbol id="rating:star">
@@ -62,13 +62,14 @@ function Card({onClick, ...props}) {
             </svg>
           </div>
           <div className="grid gap-1 items-center font-bold text-lg content-start">
-            <span>{props.rating}/5.0</span>
+            <span className="text-base md:text-lg">{props.rating}/5.0</span>
           </div>
         </div>
         {/* Push the button to the bottom */}
         <div className="mt-auto">
           <a
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-3" onClick={() => onClick(props.id)}
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 mt-3"
+            onClick={() => onClick(props.id)}
           >
             Read more
             <svg
