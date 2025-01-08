@@ -13,3 +13,7 @@
     /* margin-top: 5px; */
     text-transform: none;
 }
+
+.mb-2 {
+    margin-bottom: 0.5rem; /* Adjust this value to make it closer */
+  }

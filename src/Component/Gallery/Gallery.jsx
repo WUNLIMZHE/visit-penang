@@ -7,7 +7,7 @@ import img6 from '/23little-india.webp'
 export default function Gallery(){
     return (
         <div className="flex justify-center data-center min-h-screen">
-        <section className="mt-[128px] grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 justify-data-center mb-10">
+        <section className="mt-[42px] grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 justify-data-center mb-10">
           <img className="w-full h-[220px] rounded-[10px]" src={img1}/>
           <img className="w-full h-[220px] rounded-[10px]" src={img2}/>
           <img className="w-full h-[220px] rounded-[10px]" src={img3}/>
