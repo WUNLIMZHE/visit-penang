@@ -1,33 +1,59 @@
-nav{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional customizations for hover effect */
+@layer utilities {
+  .fancy-hover {
+    @apply transition duration-300 ease-in-out transform;
+  }
+
+  .fancy-hover:hover {
+    @apply scale-110 text-blue-500;
+  }
+
+  .fancy-hover:hover::after {
+    content: "";
+    position: absolute;
     width: 100%;
-    background: rgb(173, 220, 249);
-    color: whitesmoke;
-    padding: 4px 0;
-    position: fixed;
-    top: 0;
+    height: 3px;
+    background-color: currentColor;
+    bottom: 0;
     left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
+    @apply transition-all duration-300;
+  }
 }
 
-.logo{
-    width: 200px;
+nav {
+  width: 100%;
+  background: rgb(173, 220, 249);
+  color: whitesmoke;
+  padding: 4px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
 }
 
-nav ul{
-    white-space: nowrap;
+.logo {
+  width: 200px;
 }
 
-nav ul li{
-    display: inline-block;
-    list-style-type: none;
-    margin: 10px 20px;
-    font-size: 20px;
+nav ul {
+  white-space: nowrap;
 }
 
-.dark-nav{
-    background: rgb(70, 113, 130);
-    transition: 0.5s;
+nav ul li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 10px 20px;
+  font-size: 20px;
+}
+
+.dark-nav {
+  background: rgb(70, 113, 130);
+  transition: 0.5s;
 }

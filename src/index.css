@@ -6,7 +6,13 @@
 
 @media (min-width: 640px) {
     .container {
-        max-width: 100%;  /* Overrides the max-width property */
+        max-width: 100% !important; 
+    }
+}
+
+@media (max-width: 300px) {
+    .container {
+      width: 300px; 
     }
 }
 
