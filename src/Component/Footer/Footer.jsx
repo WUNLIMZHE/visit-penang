@@ -1,8 +1,9 @@
 import './Footer.css'
 export default function Footer(){
     return (
+        // <div className='footer'>
         <div className='footer'>
-            <div className="promotion">
+            {/* <div className="promotion">
                 <p className='intro'>Let's talk</p>
                 <p className='subtext'>Planning a trip to a foreign land at the right time is never easy. Sign up for our newsletter to stay in tune for future updates.</p>
                 <div className="email">                
@@ -27,7 +28,7 @@ export default function Footer(){
                     <span>Fax</span>
                     <p>123456789</p>
                 </div>
-            </div>
+            </div> */}
             <p className='copyright'>Copyright &#169; 2025 - All rights reserved by WLZ Systems & Solutions LLC</p>
         </div>
     );

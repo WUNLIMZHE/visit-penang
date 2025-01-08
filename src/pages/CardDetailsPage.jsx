@@ -2,6 +2,7 @@
 import Navbar from "../Component/Navbar/Navbar";
 import CardDetails from "../Component/CardDetails";
 import { useLocation } from 'react-router-dom';
+import Footer from "../Component/Footer/Footer";
 
 function CardDetailsPage(data){
 
@@ -14,6 +15,7 @@ function CardDetailsPage(data){
       <div className="max-w-7xl mx-auto px-8">
         <CardDetails data={location.state}/>
       </div>
+      <Footer />
     </div>
   );
 }

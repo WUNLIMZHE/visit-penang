@@ -1,13 +1,13 @@
 .footer{
     position: relative;
-    bottom: 3.25rem;
+    /* bottom: 3.25rem;
     display: grid;
     grid-template-columns: repeat(2, 50%);
     justify-content: space-between;
     background-color: rgb(3, 78, 65);
     min-height: 20rem;
     color: white;
-    column-gap: 7rem;
+    column-gap: 7rem; */
     font-size: 1.2rem;
 }
 
