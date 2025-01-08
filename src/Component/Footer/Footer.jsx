@@ -21,11 +21,11 @@ export default function Footer(){
                 </div>
                 <div className="item">
                     <span>Contact</span>
-                    +60175927250
+                    <p>+60175927250</p>
                 </div>
                 <div className="item">
                     <span>Fax</span>
-                    123456789
+                    <p>123456789</p>
                 </div>
             </div>
             <p className='copyright'>Copyright &#169; 2025 - All rights reserved by WLZ Systems & Solutions LLC</p>
