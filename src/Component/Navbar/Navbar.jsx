@@ -39,13 +39,13 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="fancy-hover relative">
-            <Link to="/Food">Food</Link>
+            <Link to="/food">Food</Link>
           </li>
           <li className="fancy-hover relative">
-            <Link to="/Tourism">Tourist Attractions</Link>
+            <Link to="/tourism">Tourist Attractions</Link>
           </li>
           <li className="fancy-hover relative">
-            <Link to="/Hotels">Hotels</Link>
+            <Link to="/hotels">Hotels</Link>
           </li>
           <li className="hover:scale-110 transition-transform duration-300 ease-in-out">
             <a href="https://www.linkedin.com/in/wunlimzhe/" target="_blank" rel="noopener noreferrer">

@@ -1,31 +1,32 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types"; // Import PropTypes
 
 function CardDetails({ data }) {
-  const card = data.card;
+  const card = data;
 
   let backToPage, backToLabel;
 
   if (card.category === "food") {
-    backToPage = "/Food";
+    backToPage = "/food";
     backToLabel = "foods";
   } else if (card.category === "tourist-spot") {
-    backToPage = "/Tourism";
+    backToPage = "/tourism";
     backToLabel = "tourist spots";
   } else if (card.category === "hotel") {
-    backToPage = "/Hotels";
+    backToPage = "/hotels";
     backToLabel = "hotels";
   }
 
-  console.log("Received data from card", data);
+  // console.log("Received data from card", data);
 
   // Split the details into paragraphs
-  const paragraphs = card.details
-    .split("\n")
-    .filter((paragraph) => paragraph.trim() !== "");
+  // const paragraphs = card.details
+  //   .split("\n")
+  //   .filter((paragraph) => paragraph.trim() !== "");
 
-  console.log(paragraphs);
+  // console.log(paragraphs);
   return (
-    <div className="max-w-5xl mx-auto px-8 mt-[128px]">
+    <div className="max-w-5xl mx-auto px-8 mt-[128px] min-h-screen">
       <p>
         ←{" "}
         <Link to={backToPage} className="link hover:underline">
@@ -315,3 +316,22 @@ function CardDetails({ data }) {
 }
 
 export default CardDetails;
+
+// Validate the 'data' prop
+CardDetails.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    description: PropTypes.string,
+    img: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    details: PropTypes.string.isRequired,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    openingHours: PropTypes.string,
+    booking: PropTypes.string,
+    phone: PropTypes.string,
+    source: PropTypes.string,
+  }).isRequired,
+};

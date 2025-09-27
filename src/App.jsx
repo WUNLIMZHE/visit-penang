@@ -13,7 +13,7 @@ const App = () => {
       <Route path="/food" element={<Food data={data} />} />
       <Route path="/tourism" element={<Tourism data={data} />} />
       <Route path="/hotels" element={<Hotels data={data} />} />
-      <Route path="/details/:category/:id" element={<CardDetailsPage/>} />
+      <Route path="/details/:category/:id" element={<CardDetailsPage data={data}/>} />
     </Routes>
   );
 };

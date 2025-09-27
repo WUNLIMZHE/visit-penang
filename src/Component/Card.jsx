@@ -16,7 +16,9 @@ function Card({ onClick, ...props }) {
         <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-black">
           {props.name}
         </h5>
-        <p className="mb-3 font-normal text-gray-700 text-base md:text-base">{props.description}</p>
+        <p className="mb-3 font-normal text-gray-700 text-base md:text-base">
+          {props.description}
+        </p>
         <div className="flex gap-x-3">
           <div className="grid gap-1 items-center text-theme-800 content-start mt-1">
             <svg
@@ -96,12 +98,14 @@ function Card({ onClick, ...props }) {
 
 // Props validation
 Card.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   img: PropTypes.string.isRequired, // Image URL is required
   alt: PropTypes.string, // Alternative text for the image
   name: PropTypes.string.isRequired, // Card title
   description: PropTypes.string.isRequired, // Description text
   location: PropTypes.string, // Location text
   rating: PropTypes.string, // Rating (string)
+  onClick: PropTypes.func.isRequired, // onClick handler
 };
 
 export default Card;
