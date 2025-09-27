@@ -34,7 +34,8 @@ const CardsLayout = ({ data }) => {
     console.log("Card found: ", card);
     if (card) {
       console.log("Card found!");
-      navigate("/details", { state: { card } }); // Ensure the state is passed here
+      // Use the dynamic route
+      navigate(`/details/${card.category}/${card.id}`, { state: { card } });
     } else {
       console.log("Event not found");
     }

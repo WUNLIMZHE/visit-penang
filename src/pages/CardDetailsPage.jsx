@@ -5,7 +5,7 @@ import CardDetails from "../Component/CardDetails";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-function CardDetailsPage(data) {
+function CardDetailsPage() {
   useEffect(() => {
     // Scroll to the top of the page on component mount
     window.scrollTo(0, 0);
