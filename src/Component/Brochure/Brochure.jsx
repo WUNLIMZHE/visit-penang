@@ -1,6 +1,7 @@
 // import React from 'react'
 import "./Brochure.css";
-import searchGreen from "../../assets/search_iconGreen.png";
+import searchGreen from "../../assets/images/search_iconGreen.png";
+import PropTypes from "prop-types";
 // import { Link } from "react-router-dom";
 
 const Brochure = ({ onExploreMore }) => {
@@ -27,4 +28,8 @@ const Brochure = ({ onExploreMore }) => {
   );
 };
 
+// Props validation
+Brochure.propTypes = {
+  onExploreMore: PropTypes.func.isRequired,
+};
 export default Brochure;

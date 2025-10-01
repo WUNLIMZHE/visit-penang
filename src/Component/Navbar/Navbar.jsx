@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Navbar.css";
-import logo from "../../assets/visitpenang_logo.png";
+import logo from "../../assets/images/visitpenang_logo.png";
 import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown/dropdown";
 const Navbar = () => {

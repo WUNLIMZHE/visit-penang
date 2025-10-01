@@ -29,7 +29,7 @@ export default function Footer(){
                     <p>123456789</p>
                 </div>
             </div> */}
-            <p className='copyright'>Copyright &#169; 2025 - All rights reserved by WLZ Systems & Solutions LLC</p>
+            <p className='copyright text-md md:text-lg lg:text-xl'>Copyright &#169; 2025 - All rights reserved by WLZ Systems & Solutions LLC</p>
         </div>
     );
 }

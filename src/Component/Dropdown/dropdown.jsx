@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import down_arrow from "../../assets/down-arrow.png";
+import down_arrow from "../../assets/images/down-arrow.png";
 import "./dropdown.css";
 
 export default function Dropdown() {
