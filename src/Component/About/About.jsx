@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './About.css'
 import about_img from '../../assets/about.jpg'
 import play_icon from '../../assets/play-button.png'

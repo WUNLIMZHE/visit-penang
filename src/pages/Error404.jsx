@@ -1,6 +1,7 @@
 import Footer from "../Component/Footer/Footer";
 import Navbar from "../Component/Navbar/Navbar";
 import { Link } from "react-router-dom";
+import error404_img from "../assets/error-404.webp";
 
 const Error404 = () => {
   return (
@@ -18,7 +19,7 @@ const Error404 = () => {
         {/* Illustration */}
         <div className="mt-8 w-full max-w-xs md:max-w-md">
           <img
-            src="src/assets/error-404.webp"
+            src={error404_img}
             alt="Lost"
             className="w-full h-auto mx-auto"
           />
