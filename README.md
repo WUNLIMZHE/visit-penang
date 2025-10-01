@@ -1,4 +1,4 @@
-# Sunny Papyrus Book Store
+# Explore Amazing Penang
 
 About this application
 -------------------------------------------------------
