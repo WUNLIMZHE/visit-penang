@@ -1,8 +1,39 @@
-# React + Vite
+# Sunny Papyrus Book Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+About this application
+-------------------------------------------------------
+A tourism-focused web application that showcases Penang’s tourist attractions, cuisine, and hotel booking options.
 
-Currently, two official plugins are available:
+Running the program
+-------------------------------------------------------
+Clone this repo:
+```
+git clone https://github.com/WUNLIMZHE/visit-penang.git
+cd visit-penang
+```
+**Running with Node** <br/>
+1. Make sure you have Node.JS installed.<br/>
+Node installation link: <br/>
+```
+https://nodejs.org/en
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Navigate to the frontend directory.<br/>
+```
+cd .\frontend\
+```
+
+3. In the directory, install the dependencies using npm install.<br/>
+```
+npm install
+```
+
+4. Run the server:<br/>
+```
+npm run dev
+```
+
+5. Go to http://localhost:5173.
+```
+http://localhost:5173
+```
