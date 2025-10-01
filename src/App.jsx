@@ -15,6 +15,7 @@ const App = () => {
       <Route path="/tourism" element={<Tourism data={data} />} />
       <Route path="/hotels" element={<Hotels data={data} />} />
       <Route path="/details/:category/:id" element={<CardDetailsPage data={data}/>} />
+      <Route path="/404" element={<Error404 />} />
       <Route path="*" element={<Error404 />} />
     </Routes>
   );
