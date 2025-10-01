@@ -20,6 +20,7 @@ function CardDetailsPage({ data }) {
     window.scrollTo(0, 0);
   }, []); // Empty dependency array ensures this runs only on mount
 
+  console.log(data);
   // Try to get the card data either from state or fallback to finding in array
   const card =
     location.state?.card ||
