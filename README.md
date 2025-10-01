@@ -18,22 +18,17 @@ Node installation link: <br/>
 https://nodejs.org/en
 ```
 
-2. Navigate to the frontend directory.<br/>
-```
-cd .\frontend\
-```
-
-3. In the directory, install the dependencies using npm install.<br/>
+2. In the directory, install the dependencies using npm install.<br/>
 ```
 npm install
 ```
 
-4. Run the server:<br/>
+3. Run the server:<br/>
 ```
 npm run dev
 ```
 
-5. Go to http://localhost:5173.
+4. Go to http://localhost:5173.
 ```
 http://localhost:5173
 ```
