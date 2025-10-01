@@ -1,12 +1,11 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./Program.css";
-import food_program from "../../assets/food_laksa.jpg";
-import tourist_program from "../../assets/escape_penang.jpg";
-import hotel_program from "../../assets/hotel.jpg";
-import food_icon from "../../assets/food_icon.png";
-import tourist_icon from "../../assets/tourist_icon.png";
-import hotel_icon from "../../assets/hotel_icon.png";
+import food_program from "../../assets/images/food_laksa.jpg";
+import tourist_program from "../../assets/images/escape_penang.jpg";
+import hotel_program from "../../assets/images/hotel.jpg";
+import food_icon from "../../assets/images/food_icon.png";
+import tourist_icon from "../../assets/images/tourist_icon.png";
+import hotel_icon from "../../assets/images/hotel_icon.png";
 
 const Program = () => {
   return (

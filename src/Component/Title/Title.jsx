@@ -1,5 +1,6 @@
 import React from "react";
 import "./Title.css";
+import PropTypes from "prop-types";
 
 const Title = React.forwardRef(({ subTitle, title }, ref) => {
   return (
@@ -9,5 +10,13 @@ const Title = React.forwardRef(({ subTitle, title }, ref) => {
     </div>
   );
 });
+
+Title.displayName = "Title"; // ✅ fixes ESLint warning
+
+// Props validation
+Title.propTypes = {
+  subTitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 export default Title;

@@ -1,7 +1,7 @@
 import Footer from "../Component/Footer/Footer";
 import Navbar from "../Component/Navbar/Navbar";
 import { Link } from "react-router-dom";
-import error404_img from "../assets/error-404.webp";
+import error404_img from "../assets/images/error_404.webp";
 
 const Error404 = () => {
   return (

@@ -1,7 +1,7 @@
 .brochure {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(rgba(8,0,58,0.6),rgba(8,0,58,0.6)), url('../../assets/penang_bridge.jpg');
+    background: linear-gradient(rgba(8,0,58,0.6),rgba(8,0,58,0.6)), url('../../assets/images/penang_bridge.jpg');
     background-size: cover;
     background-position: center;
     color: whitesmoke;
