@@ -25,7 +25,7 @@ function CardDetailsPage({ data }) {
     location.state?.card ||
     data.find(
       (item) =>
-        item.id === Number(params.id) && item.category === params.category
+        String(item.id) === params.id && item.category === params.category
     );
     
   // If card not found, redirect to 404
