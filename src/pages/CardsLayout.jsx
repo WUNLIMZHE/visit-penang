@@ -29,15 +29,15 @@ const CardsLayout = ({ data }) => {
   }
 
   function handleDetailsButtonClick(id) {
-    console.log("Looking for details for cardid: ", id);
+    // console.log("Looking for details for cardid: ", id);
     const card = data.find((e) => e.id === id);
-    console.log("Card found: ", card);
+    // console.log("Card found: ", card);
     if (card) {
-      console.log("Card found!");
+      // console.log("Card found!");
       // Use the dynamic route
       navigate(`/details/${card.category}/${card.id}`, { state: { card } });
     } else {
-      console.log("Event not found");
+      // console.log("Event not found");
     }
   }
 
