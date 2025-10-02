@@ -48,9 +48,12 @@ const Navbar = () => {
             <Link to="/hotels">Hotels</Link>
           </li>
           <li className="hover:scale-110 transition-transform duration-300 ease-in-out">
-            <a href="https://www.linkedin.com/in/wunlimzhe/" target="_blank" rel="noopener noreferrer">
+            {/* <a href="https://www.linkedin.com/in/wunlimzhe/" target="_blank" rel="noopener noreferrer">
               <button className="btn">Contact Us</button>
-            </a>
+            </a> */}
+            <Link to="/plan-trip">
+              <button className="btn">Plan Your Trip</button>
+            </Link>
           </li>
         </ul>
       ) : (
