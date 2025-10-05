@@ -137,7 +137,11 @@ const NewActivity = ({ onAdd, tripDate }) => {
 
     // forecast spam check
     const { spam, status, message } = forecastSpam(
+      enteredStartDate,
       enteredEndDate,
+      forecast?.details?.length
+        ? forecast.details[0].time.split(" ")[0]
+        : null,
       forecast?.details?.length
         ? forecast.details[forecast.details.length - 1].time.split(" ")[0]
         : null,
@@ -145,15 +149,15 @@ const NewActivity = ({ onAdd, tripDate }) => {
     );
 
     // block cases (spam = true)
-    if (spam) {
+    if (spam && status !== "trimForecast") {
       setErrorMessageHeader("Forecast Already Checked");
       setErrorMessage(message);
       warningModal.current.open();
       return;
     }
 
-    // trim the forecast data if status = "beyondForecast"
-    if (status === "beyondForecast") {
+    // trim the forecast data if status = "trimForecast"
+    if (status === "trimForecast") {
       // trim existing forecast data to fit new time range
       const filteredForecastData = filterForecastByDateRange(
         forecast.details,
@@ -340,4 +344,8 @@ export default NewActivity;
 
 NewActivity.propTypes = {
   onAdd: PropTypes.func.isRequired,
+  tripDate: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date)
+  ]).isRequired,
 };

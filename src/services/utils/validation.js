@@ -76,160 +76,248 @@ export function validateActivity({
 }
 
 // status-based validator (pure)
+// export function checkForecastStatus(
+//   activityStartDate,
+//   activityLastDate,
+//   forecastStartDate,
+//   forecastLastDate,
+//   { maxForecastDays = 5 } = {}
+// ) {
+//   const msPerDay = 24 * 60 * 60 * 1000;
+
+//   const activityStart = new Date(activityStartDate);
+//   const activityLast = new Date(activityLastDate);
+//   const forecastStart = new Date(forecastStartDate);
+//   const forecastLast = new Date(forecastLastDate);
+//   const today = new Date();
+
+//   // validate
+//   if (
+//     Number.isNaN(activityLast.getTime()) ||
+//     Number.isNaN(forecastLast.getTime())
+//   ) {
+//     return { status: "invalidDate", message: "Invalid date provided." };
+//   }
+
+//   // normalize to local date-only to avoid time-of-day issues
+//   activityStart.setHours(0, 0, 0, 0);
+//   activityLast.setHours(0, 0, 0, 0);
+//   forecastStart.setHours(0, 0, 0, 0);
+//   forecastLast.setHours(0, 0, 0, 0);
+//   today.setHours(0, 0, 0, 0);
+
+//   // useful numeric measures (can be negative)
+//   const daysToForecastEnd = Math.ceil(
+//     (forecastLast.getTime() - today.getTime()) / msPerDay
+//   );
+//   const daysActivityBeyondForecast = Math.ceil(
+//     (activityLast.getTime() - forecastLast.getTime()) / msPerDay
+//   );
+//   console.log(`daysActivityBeyondForecast: ${daysActivityBeyondForecast}`);
+//   const daysForecastAfterActivity = Math.ceil(
+//     (forecastLast.getTime() - activityLast.getTime()) / msPerDay
+//   );
+//   const maxForecastEnd = new Date(today.getTime() + maxForecastDays * msPerDay);
+//   maxForecastEnd.setHours(0, 0, 0, 0);
+
+//     // CASE: activity ends after forecast coverage OR forecast horizon itself exceeds maxForecastDays
+//   // Both mean "forecast cannot cover requested activity days" (treat them the same)
+//   // if (activityLast.getTime() > forecastLast.getTime() || daysToForecastEnd > maxForecastDays) {
+//   console.log(
+//     `maxForecastEnd: ${maxForecastEnd}; forecastLast: ${forecastLast}`
+//   );
+//   if (forecastStart.getTime() >= maxForecastEnd.getTime() || forecastLast.getTime() >= maxForecastEnd.getTime()) {
+//     return {
+//       status: "beyondForecast",
+//       message: `Forecast data is only available up to ${maxForecastDays} day(s) from today.
+// Your selected activity extends ${daysActivityBeyondForecast} day(s) beyond the available forecast period.`,
+//       daysActivityBeyondForecast,
+//       daysToForecastEnd,
+//     };
+//   }
+
+//   // CASE: no forecast data at all
+//   if (!forecastLastDate) {
+//     return { status: "noForecast", message: "No forecast data available." };
+//   }
+
+//     // CASE: forecast contains data beyond activity end -> TRIM needed
+//   if (
+//     forecastStart.getTime() < activityStart.getTime() ||
+//     forecastLast.getTime() > activityLast.getTime()
+//   ) {
+//     return {
+//       status: "trimForecast",
+//       message: `Forecast extends ${daysForecastAfterActivity} day(s) beyond activity end — trim forecast to activity end.`,
+//       daysForecastAfterActivity,
+//       daysToForecastEnd,
+//     };
+//   }
+
+//   // Past / expired
+//   if (activityLast.getTime() < today.getTime()) {
+//     return {
+//       status: "pastActivity",
+//       message: "This activity has already ended.",
+//       daysToForecastEnd,
+//       daysActivityBeyondForecast,
+//     };
+//   }
+
+//   if (activityLast.getTime() > forecastLast.getTime()) {
+//     return {
+//       status: "requestForecast",
+//       message: `Your activity extends ${daysActivityBeyondForecast} day(s) beyond the current forecast coverage.
+// Please request an extended forecast up to the activity’s end date (maximum ${maxForecastDays} day(s) from today).`,
+//       daysActivityBeyondForecast,
+//       daysToForecastEnd,
+//     };
+//   }
+
+//   // Forecast exactly covers activity end
+//   if (activityLast.getTime() === forecastLast.getTime()) {
+//     return {
+//       status: "match",
+//       message: "Forecast exactly covers activity end.",
+//       daysToForecastEnd,
+//     };
+//   }
+
+//   // Default fallback (shouldn't happen)
+//   return {
+//     status: "unknown",
+//     message: "Unknown status.",
+//     daysToForecastEnd,
+//     daysActivityBeyondForecast,
+//   };
+// }
+
+// status-based validator (optimized to reduce API calls)
 export function checkForecastStatus(
-  activityLastDate,
-  forecastLastDate,
+  activityStartDate,
+  activityEndDate,
+  forecastStartDate,
+  forecastEndDate,
   { maxForecastDays = 5 } = {}
 ) {
-  const msPerDay = 24 * 60 * 60 * 1000;
+  const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
-  if (!forecastLastDate) {
-    return { status: "noForecast", message: "No forecast data available." };
-  }
-
-  const activityLast = new Date(activityLastDate);
-  const forecastLast = new Date(forecastLastDate);
   const today = new Date();
-
-  // validate
-  if (
-    Number.isNaN(activityLast.getTime()) ||
-    Number.isNaN(forecastLast.getTime())
-  ) {
-    return { status: "invalidDate", message: "Invalid date provided." };
-  }
-
-  // normalize to local date-only to avoid time-of-day issues
-  activityLast.setHours(0, 0, 0, 0);
-  forecastLast.setHours(0, 0, 0, 0);
   today.setHours(0, 0, 0, 0);
 
-  // useful numeric measures (can be negative)
-  const daysToForecastEnd = Math.ceil(
-    (forecastLast.getTime() - today.getTime()) / msPerDay
-  );
-  const daysActivityBeyondForecast = Math.ceil(
-    (activityLast.getTime() - forecastLast.getTime()) / msPerDay
-  );
-  const daysForecastAfterActivity = Math.ceil(
-    (forecastLast.getTime() - activityLast.getTime()) / msPerDay
+  // Parse & normalize input
+  const activityStart = new Date(activityStartDate);
+  const activityEnd = new Date(activityEndDate);
+  const forecastStart = new Date(forecastStartDate);
+  const forecastEnd = new Date(forecastEndDate);
+
+  [activityStart, activityEnd, forecastStart, forecastEnd].forEach((d) =>
+    d.setHours(0, 0, 0, 0)
   );
 
-  // Past / expired
-  if (activityLast.getTime() < today.getTime()) {
+  // Validation
+  if (isNaN(activityStart) || isNaN(activityEnd)) {
+    return { status: "invalidDate", message: "Invalid activity date." };
+  }
+  if (!forecastStartDate || !forecastEndDate) {
+    return { status: "requestForecast", message: "No forecast data yet." };
+  }
+
+  // Derived values
+  const maxForecastEnd = new Date(
+    today.getTime() + maxForecastDays * MS_PER_DAY
+  );
+  maxForecastEnd.setHours(0, 0, 0, 0);
+
+  const daysBeyondForecast = Math.ceil(
+    (activityEnd - forecastEnd) / MS_PER_DAY
+  );
+  
+  // CASE 1: activity is in the past
+  if (activityEnd < today) {
     return {
       status: "pastActivity",
       message: "This activity has already ended.",
-      daysToForecastEnd,
-      daysActivityBeyondForecast,
     };
   }
 
-  // CASE: forecast contains data beyond activity end -> TRIM needed
-  if (forecastLast.getTime() > activityLast.getTime()) {
+  // CASE 2: activity completely within forecast range → reuse data
+  if (activityStart >= forecastStart && activityEnd <= forecastEnd) {
     return {
       status: "trimForecast",
-      message: `Forecast extends ${daysForecastAfterActivity} day(s) beyond activity end — trim forecast to activity end.`,
-      daysForecastAfterActivity,
-      daysToForecastEnd,
+      message:
+        "Activity range is within the current forecast data. Reuse existing forecast.",
     };
   }
 
-  // CASE: activity ends after forecast coverage OR forecast horizon itself exceeds maxForecastDays
-  // Both mean "forecast cannot cover requested activity days" (treat them the same)
-  // if (activityLast.getTime() > forecastLast.getTime() || daysToForecastEnd > maxForecastDays) {
-  if (daysToForecastEnd > maxForecastDays) {
+  // CASE 3: activity extends beyond forecast, but still within max API limit
+  if (activityStart < forecastStart || (activityEnd > forecastEnd && activityEnd <= maxForecastEnd)) {
+    return {
+      status: "extendForecast",
+      message: `Activity extends ${daysBeyondForecast} day(s) beyond current forecast. Extend forecast (still within ${maxForecastDays}-day limit).`,
+      daysBeyondForecast,
+    };
+  }
+
+  // CASE 4: activity exceeds API max range
+  if (activityEnd > maxForecastEnd) {
     return {
       status: "beyondForecast",
-      message: `Forecast data is only available up to ${maxForecastDays} day(s) from today. 
-Your selected activity extends ${daysActivityBeyondForecast} day(s) beyond the available forecast period.`,
-      daysActivityBeyondForecast,
-      daysToForecastEnd,
+      message: `Forecast data is only available up to ${maxForecastDays} day(s) from today. Activity extends ${daysBeyondForecast} day(s) beyond available forecast.`,
+      daysBeyondForecast,
     };
   }
 
-  if (activityLast.getTime() > forecastLast.getTime()) {
+  // CASE 5: forecast missing or expired
+  if (forecastEnd < today) {
     return {
       status: "requestForecast",
-      message: `Your activity extends ${daysActivityBeyondForecast} day(s) beyond the current forecast coverage. 
-Please request an extended forecast up to the activity’s end date (maximum ${maxForecastDays} day(s) from today).`,
-      daysActivityBeyondForecast,
-      daysToForecastEnd,
+      message: "Forecast is outdated or missing. Request new data.",
     };
   }
 
-  // Forecast exactly covers activity end
-  if (activityLast.getTime() === forecastLast.getTime()) {
-    return {
-      status: "match",
-      message: "Forecast exactly covers activity end.",
-      daysToForecastEnd,
-    };
-  }
-
-  // Default fallback (shouldn't happen)
+  // Fallback
   return {
     status: "unknown",
-    message: "Unknown status.",
-    daysToForecastEnd,
-    daysActivityBeyondForecast,
+    message: "Unable to determine forecast status.",
   };
 }
 
 // context-aware mapper that returns spam boolean + helpful info
 export function forecastSpam(
+  activityStartDate,
   activityLastDate,
+  forecastStartDate,
   forecastLastDate,
   context = "form"
 ) {
   console.log(
     `activityLastDate: ${activityLastDate}; forecastLastDate: ${forecastLastDate}; context: ${context}`
   );
-  const res = checkForecastStatus(activityLastDate, forecastLastDate);
+  const res = checkForecastStatus(
+    activityStartDate,
+    activityLastDate,
+    forecastStartDate,
+    forecastLastDate
+  );
   console.log(`res.status: ${res.status}`);
 
   switch (res.status) {
-    case "noForecast":
-      // no forecast — not spam in form, but caller may want to prompt user
+    case "requestForecast":
       return { spam: false, status: res.status, message: res.message };
-
-    case "invalidDate":
-      return { spam: true, status: res.status, message: res.message };
-
-    case "pastActivity":
-      return { spam: true, status: res.status, message: res.message };
 
     case "trimForecast":
       // forecast has extra days after activity end — always trim, not spam
+      console.log("✅ Using cached forecast (trimForecast)");
       return {
-        spam: false,
+        spam: true,
         status: res.status,
         message: res.message,
-        trimTo: activityLastDate,
-        daysForecastAfterActivity: res.daysForecastAfterActivity,
       };
 
-    // case "beyondForecast":
-    //   // both: activity extends beyond forecast OR forecast horizon > max (both cannot be forecasted)
-    //   if (context === "form") {
-    //     // form => not spam; inform caller how many days are covered so caller can trim / warn user
-    //     return {
-    //       spam: false,
-    //       status: res.status,
-    //       message: `Forecast covers ${res.daysToForecastEnd} day(s) from today. Activity extends ${res.daysActivityBeyondForecast} day(s) beyond forecast coverage. Trim/limit forecast accordingly.`,
-    //       daysToForecastEnd: res.daysToForecastEnd,
-    //       daysActivityBeyondForecast: res.daysActivityBeyondForecast,
-    //     };
-    //   } else {
-    //     // card => spam (card updates can't change activity date)
-    //     return {
-    //       spam: true,
-    //       status: res.status,
-    //       message: `Forecast cannot be updated: activity ends beyond forecast coverage.`,
-    //       daysToForecastEnd: res.daysToForecastEnd,
-    //       daysActivityBeyondForecast: res.daysActivityBeyondForecast,
-    //     };
-    //   }
+    case "extendForecast":
+      return { spam: false, status: res.status, message: res.message };
+
     case "beyondForecast":
       return {
         spam: true,
@@ -237,82 +325,10 @@ export function forecastSpam(
         message: res.message,
       };
 
-    case "requestForecast":
-      return { spam: false, status: res.status, message: res.message };
-
-    case "match":
-      return {
-        spam: true,
-        status: res.status,
-        message: res.message,
-        daysToForecastEnd: res.daysToForecastEnd,
-      };
+    case "pastActivity":
+      return { spam: true, status: res.status, message: res.message };
 
     default:
       return { spam: false, status: res.status, message: res.message };
   }
 }
-
-// export function forecastSpam(activityLastDate, forecastLastDate) {
-//   if (!forecastLastDate) {
-//     console.log("No forecast data available.");
-//     return {
-//       spam: false,
-//       status: "noForecast",
-//       message: "No forecast data available.",
-//     };
-//   }
-//   const msPerDay = 1000 * 60 * 60 * 24;
-
-//   console.log(
-//     `activityLastDate: ${activityLastDate}; forecastLastDate: ${forecastLastDate}`
-//   );
-//   const activityLast = new Date(activityLastDate);
-//   const forecastLast = new Date(forecastLastDate);
-//   const today = new Date();
-
-//   if (Number.isNaN(activityLast.getTime()) || Number.isNaN(forecastLast.getTime())) {
-//     return { status: "invalidDate", message: "Invalid date provided." };
-//   }
-//   console.log(
-//     `activityLast: ${activityLast}; forecastLast: ${forecastLast}; today: ${today}`
-//   );
-
-//   // Normalize to date-only (midnight) to avoid time-of-day bugs
-//   activityLast.setHours(0, 0, 0, 0);
-//   forecastLast.setHours(0, 0, 0, 0);
-//   today.setHours(0, 0, 0, 0);
-
-//   if (activityLast.getTime() === forecastLast.getTime()) {
-//     return {
-//       spam: true,
-//       status: "sameForecast",
-//       message: "The current forecast is already the latest (only covers the next 5 days).",
-//     }
-//   }
-
-//   // If the activity has already ended, flag as spam
-//   if (activityLast < today) {
-//     return {
-//       spam: true,
-//       status: "pastActivity",
-//       message: "This activity has already ended.",
-//     };
-//   }
-
-//   const diffTime = Math.abs(forecastLast.getDate() - today.getDate());
-//   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-//   console.log(`diffDays: ${diffDays}`);
-
-//   // If the duration is more than 5 days, flag as spam
-//   if (diffDays > 5) {
-//     return {
-//       spam: true,
-//       status: "beyondForecast",
-//       message:
-//         "The current forecast is already the latest (only covers the next 5 days).",
-//     };
-//   }
-
-//   return { spam: false, status: "ok", message: "" };
-// }

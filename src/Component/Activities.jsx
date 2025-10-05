@@ -27,7 +27,7 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
         <p className="text-stone-600 mb-4">
           Please make sure you provide a valid activity details.
         </p> */}
-        {activity.forecast.details.length > 0 ? (
+        {activity && activity.forecast.details.length > 0 ? (
           activity.forecast.details.map(
             ({ time, condition, description, temp, humidity }) => {
               const dateObj = new Date(time);
@@ -141,4 +141,8 @@ Activities.propTypes = {
   ),
   onAdd: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  tripDate: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date)
+  ]).isRequired,
 };
