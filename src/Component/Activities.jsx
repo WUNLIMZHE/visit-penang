@@ -4,9 +4,20 @@ import NewActivity from "./NewActivity";
 import PropTypes from "prop-types";
 import Forecast from "./Forecast";
 import Modal from "./Modal";
+import { forecastSpam } from "../services/utils/validation";
+import {
+  getForecast,
+  buildForecastResponse,
+} from "../services/api/weatherServices";
+import { filterForecastByDateRange } from "../services/utils/filter";
 
 const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
   const [activity, setActivity] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessageHeader, setErrorMessageHeader] = useState("");
+  const [forecast, setForecast] = useState({ type: "none", details: [] });
+
+  const warningModal = useRef();
   const modal = useRef();
   const showForecast = (activityId) => {
     const filteredActivity = activities.find((act) => act.id === activityId);
@@ -17,8 +28,110 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
     }
   };
 
+  const updateForecast = async (activityId) => {
+    const filteredActivity = activities.find((act) => act.id === activityId);
+    console.log(filteredActivity);
+    if (!filteredActivity) {
+      setErrorMessage("Technical error occurred. Please try again.");
+      setErrorMessageHeader("Error");
+      warningModal.current.open();
+      return;
+    }
+    const activity = filteredActivity;
+    // forecast spam check
+    const { spam, status, message } = forecastSpam(
+      activity.startDate,
+      activity.endDate,
+      activity.forecast?.details?.length
+        ? activity.forecast.details[0].time.split(" ")[0]
+        : null,
+      activity.forecast?.details?.length
+        ? activity.forecast.details[
+            activity.forecast.details.length - 1
+          ].time.split(" ")[0]
+        : null
+    );
+
+    // block cases (spam = true)
+    if (spam && status !== "trimForecast") {
+      setErrorMessageHeader("Forecast Already Checked");
+      setErrorMessage(message);
+      warningModal.current.open();
+      return;
+    }
+
+    // trim the forecast data if status = "trimForecast"
+    if (status === "trimForecast") {
+      // trim existing forecast data to fit new time range
+      const filteredForecastData = filterForecastByDateRange(
+        forecast.details,
+        activity.startDate,
+        activity.startTime,
+        activity.endDate,
+        activity.endTime
+      );
+      const forecastData = buildForecastResponse(
+        activity.startDate,
+        activity.endDate,
+        filteredForecastData.details
+      );
+      console.log("Trimmed forecast data:", forecastData);
+      // update state
+      setForecast(forecastData);
+      setErrorMessageHeader("Latest Forecast Data");
+      setErrorMessage(
+        "The existing forecast data is the latest available for the selected time range."
+      );
+      warningModal.current.open();
+      return;
+    }
+
+    try {
+      // const { lat, lon } = await getCoordinates(enteredLocation);
+      const { lat, lon } = activity.coordinates;
+      console.log(`Coordinates: lat=${lat}, lon=${lon}`);
+      // 🔑 pass full time range to getForecast
+      const forecastData = await getForecast(
+        lat,
+        lon,
+        activity.startDate,
+        activity.startTime,
+        activity.endDate,
+        activity.endTime
+      );
+
+      console.log("Forecast data:", forecastData);
+
+      // store structured forecast object in state
+      setForecast(forecastData);
+      // formModal.current.close();
+    } catch (err) {
+      // fallback option: allow saving without weather
+      setErrorMessage(err.message);
+      warningModal.current.open();
+
+      // OR: allow user to confirm saving anyway
+      // onAdd({ location: enteredLocation, forecast: null, ... });
+    }
+  };
+
   return (
     <>
+      <Modal ref={warningModal} buttonCaption="Okay">
+        <h2 className="text-xl font-bold text-stone-700 my-4">
+          {errorMessageHeader}
+        </h2>
+        <p className="text-stone-600 mb-4">
+          {errorMessage.split("\n").map((line, index) => (
+            <span className="mb-4" key={index}>
+              {line}
+            </span>
+          ))}
+        </p>
+        {/* <p className="text-stone-600 mb-4">
+              Please make sure you provide a valid activity details.
+            </p> */}
+      </Modal>
       <Modal ref={modal} buttonCaption="Okay" className="w-full max-w-lg ">
         <h2 className="text-xl font-bold text-stone-700 my-4">
           Weather Forecast
@@ -72,15 +185,6 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
         {activities.length > 0 && (
           <ul className="p-4 mt-8 rounded-md bg-stone-100">
             {activities.map((activity) => (
-              // <li key={activity.id} className="flex justify-between my-4">
-              //   <span>{activity.location}</span>
-              //   <span>{activity.startDate}</span>
-              //   <span>{activity.endDate}</span>
-              //   <span>{activity.startTime}</span>
-              //   <span>{activity.endTime}</span>
-              //   <span>{activity.note}</span>
-              //   <button className="text-stone-700 hover:text-red-500" onClick={() => onDelete(activity.id)}>Clear</button>
-              // </li>
               <li
                 key={activity.id}
                 className="flex flex-col md:flex-row md:items-center justify-between 
@@ -100,10 +204,16 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
                     </p>
                   )}
                   <Button
-                    className="mt-2"
+                    className="mt-2 block"
                     onClick={() => showForecast(activity.id)}
                   >
                     View forecast
+                  </Button>
+                  <Button
+                    className=" text-blue-400 hover:text-blue-200"
+                    onClick={() => updateForecast(activity.id)}
+                  >
+                    Update forecast
                   </Button>
                 </div>
 
@@ -141,8 +251,6 @@ Activities.propTypes = {
   ),
   onAdd: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
-  tripDate: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.instanceOf(Date)
-  ]).isRequired,
+  tripDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)])
+    .isRequired,
 };

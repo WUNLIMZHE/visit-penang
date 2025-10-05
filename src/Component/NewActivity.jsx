@@ -200,7 +200,7 @@ const NewActivity = ({ onAdd, tripDate }) => {
       // formModal.current.close();
     } catch (err) {
       // fallback option: allow saving without weather
-      setErrorMessage("Location not found. Try a broader name like city/town.");
+      setErrorMessage(err.message);
       warningModal.current.open();
 
       // OR: allow user to confirm saving anyway
