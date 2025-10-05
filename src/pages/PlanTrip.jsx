@@ -6,15 +6,35 @@ import NoTripSelected from "../Component/NoTripSelected";
 import TripSidebar from "../Component/TripSidebar";
 import SelectedTrip from "../Component/SelectedTrip";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const TRIPS_STORAGE_KEY = "trip_activities";
 
 const PlanTrip = () => {
-  const [tripsState, setTripsState] = useState({
-    selectedTripId: undefined,
-    selectedActivityId: undefined,
-    trips: [],
-    activities: [],
+  // const [tripsState, setTripsState] = useState({
+  //   selectedTripId: undefined,
+  //   selectedActivityId: undefined,
+  //   trips: [],
+  //   activities: [],
+  // });
+
+  // Load activities from localStorage on mount
+  const [tripsState, setTripsState] = useState(() => {
+    const stored = localStorage.getItem(TRIPS_STORAGE_KEY);
+    return stored
+      ? JSON.parse(stored)
+      : {
+          selectedTripId: undefined,
+          selectedActivityId: undefined,
+          trips: [],
+          activities: [],
+        };
   });
+
+  // Save activities to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem(TRIPS_STORAGE_KEY, JSON.stringify(tripsState));
+  }, [tripsState]);
 
   function handleAddActivity(activityData) {
     setTripsState((prevState) => {
@@ -37,7 +57,9 @@ const PlanTrip = () => {
     setTripsState((prevState) => {
       return {
         ...prevState,
-        activities: prevState.activities.filter((activity) => activity.id !== id),
+        activities: prevState.activities.filter(
+          (activity) => activity.id !== id
+        ),
       };
     });
   }
@@ -117,9 +139,7 @@ const PlanTrip = () => {
   );
 
   if (tripsState.selectedTripId === null) {
-    content = (
-      <NewTrip onAdd={handleAddTrip} onCancel={handleCancelAddTrip} />
-    );
+    content = <NewTrip onAdd={handleAddTrip} onCancel={handleCancelAddTrip} />;
   } else if (tripsState.selectedTripId === undefined) {
     content = <NoTripSelected onStartAddTrip={handleStartAddTrip} />;
   }

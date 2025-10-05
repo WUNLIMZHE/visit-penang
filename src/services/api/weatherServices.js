@@ -1,4 +1,4 @@
-import {  filterForecastByDateRange } from "../utils/filter";
+import {  filterForecastByDateRange1 } from "../utils/filter";
 
 // services/weatherService.js
 const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
@@ -48,7 +48,7 @@ export async function getForecast(lat, lon, startDate, startTime, endDate, endTi
   // if (filtered.length === 0) {
   //   return { type: "none", details: [] };
   // }
-  const filteredResult = filterForecastByDateRange(data, startDate, startTime, endDate, endTime);
+  const filteredResult = filterForecastByDateRange1(data, startDate, startTime, endDate, endTime);
   console.log(filteredResult);
   if (!filteredResult.hasForecast) {
     return { type: "none", details: [] };
