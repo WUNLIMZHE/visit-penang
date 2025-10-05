@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Forecast from "./Forecast";
 import Modal from "./Modal";
 
-const Activities = ({ activities, onAdd, onDelete }) => {
+const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
   const [activity, setActivity] = useState(null);
   const modal = useRef();
   const showForecast = (activityId) => {
@@ -20,35 +20,50 @@ const Activities = ({ activities, onAdd, onDelete }) => {
   return (
     <>
       <Modal ref={modal} buttonCaption="Okay" className="w-full max-w-lg ">
-        <h2 className="text-xl font-bold text-stone-700 my-4">Weather Forecast</h2>
+        <h2 className="text-xl font-bold text-stone-700 my-4">
+          Weather Forecast
+        </h2>
         {/* <p className="text-stone-600 mb-4">{errorMessage}</p>
         <p className="text-stone-600 mb-4">
           Please make sure you provide a valid activity details.
         </p> */}
-        {activity && activity.forecast.details.map(
-        ({ time, condition, description, temp, humidity }) => {
-          const dateObj = new Date(time);
-          const formattedTime = dateObj.toLocaleString("en-US", {
-            weekday: "short",
-            hour: "2-digit",
-            minute: "2-digit",
-          });
+        {activity.forecast.details.length > 0 ? (
+          activity.forecast.details.map(
+            ({ time, condition, description, temp, humidity }) => {
+              const dateObj = new Date(time);
+              const formattedTime = dateObj.toLocaleString("en-US", {
+                weekday: "short",
+                hour: "2-digit",
+                minute: "2-digit",
+              });
 
-          return (
-            <Forecast
-              key={time}
-              formattedTime={formattedTime}
-              description={description}
-              temp={temp}
-              humidity={humidity}
-              condition={condition} className="mb-2"
-            />
-          );
-        })}
+              return (
+                <Forecast
+                  key={time}
+                  formattedTime={formattedTime}
+                  description={description}
+                  temp={temp}
+                  humidity={humidity}
+                  condition={condition}
+                  className="mb-2"
+                />
+              );
+            }
+          )
+        ) : (
+          <div className="p-3 rounded-xl bg-gradient-to-r from-yellow-50 to-yellow-100 shadow-sm my-4">
+            <p className="text-sm text-stone-700">
+              No forecast data available for the selected time range.
+            </p>
+            <p className="text-xs text-stone-500">
+              ⚠️ Forecast data is only available for up to 5 days from today.
+            </p>
+          </div>
+        )}
       </Modal>
       <section>
         <h2 className="text-2xl font-bold text-stone-700 mb-4">Activities</h2>
-        <NewActivity onAdd={onAdd} />
+        <NewActivity onAdd={onAdd} tripDate={tripDate} />
         {activities.length === 0 && (
           <p className="text-stone-800 my-4">
             This project does not have any activities

@@ -1,9 +1,13 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
 import PropTypes from "prop-types";
+import { validateTrip } from "../services/utils/validation";
 
 const NewTrip = ({ onAdd, onCancel }) => {
+  const [errorMessageHeader, setErrorMessageHeader] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const modal = useRef();
 
   const title = useRef();
@@ -15,12 +19,25 @@ const NewTrip = ({ onAdd, onCancel }) => {
     const enteredDescription = description.current.value;
     const enteredStartDate = startDate.current.value;
 
-    if (
-      enteredTitle.trim() === "" ||
-      enteredDescription.trim() === "" ||
-      enteredStartDate.trim() === ""
-    ) {
+    // if (
+    //   enteredTitle.trim() === "" ||
+    //   enteredDescription.trim() === "" ||
+    //   enteredStartDate.trim() === ""
+    // ) {
+    //   // show the error modal
+    //   modal.current.open();
+    //   return;
+    // }
+    const { valid, message } = validateTrip({
+      title: enteredTitle,
+      description: enteredDescription,
+      startDate: enteredStartDate,
+    });
+
+    if (!valid) {
       // show the error modal
+      setErrorMessageHeader("Invalid Input");
+      setErrorMessage(message);
       modal.current.open();
       return;
     }
@@ -36,8 +53,8 @@ const NewTrip = ({ onAdd, onCancel }) => {
   return (
     <>
       <Modal ref={modal} buttonCaption="Okay">
-        <h2 className="text-xl font-bold text-stone-700 my-4">Invalid Input</h2>
-        <p className="text-stone-600 mb-4">Oops ... looks like you forgot to enter a value.</p>
+        <h2 className="text-xl font-bold text-stone-700 my-4">{errorMessageHeader}</h2>
+        <p className="text-stone-600 mb-4">{errorMessage}</p>
         <p className="text-stone-600 mb-4">Please make sure you provide a valid value for every input field.</p>
       </Modal>
       <div className="w-[35rem] mt-16">

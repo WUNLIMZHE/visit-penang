@@ -23,7 +23,7 @@ const SelectedTrip = ({ trip, onDelete, onAddActivity, onDeleteActivity, activit
           {trip.description}
         </p>
       </header>
-      <Activities onAdd={onAddActivity} onDelete={onDeleteActivity} activities={activities}/>
+      <Activities onAdd={onAddActivity} onDelete={onDeleteActivity} activities={activities} tripDate={trip.startDate}/>
     </div>
   );
 };
