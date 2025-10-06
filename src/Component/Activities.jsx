@@ -183,38 +183,42 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
           </p>
         )}
         {activities.length > 0 && (
-          <ul className="p-4 mt-8 rounded-md bg-stone-100">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3   gap-4 mt-8 rounded-md bg-stone-100">
             {activities.map((activity) => (
-              <li
+              <div
                 key={activity.id}
                 className="flex flex-col md:flex-row md:items-center justify-between 
                  gap-4 p-4 rounded-xl shadow-sm bg-white border border-stone-200"
               >
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-stone-800">
-                    {activity.location}
-                  </h3>
-                  <p className="text-sm text-stone-500">
-                    {activity.startDate} {activity.startTime} →{" "}
-                    {activity.endDate} {activity.endTime}
-                  </p>
-                  {activity.note && (
-                    <p className="mt-2 text-sm text-stone-700">
-                      {activity.note}
+                <div className="flex-1 h-full flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-stone-800">
+                      {activity.location}
+                    </h3>
+                    <p className="text-sm text-stone-500">
+                      {activity.startDate} {activity.startTime} →{" "}
+                      {activity.endDate} {activity.endTime}
                     </p>
-                  )}
-                  <Button
-                    className="mt-2 block"
-                    onClick={() => showForecast(activity.id)}
-                  >
-                    View forecast
-                  </Button>
-                  <Button
-                    className=" text-blue-400 hover:text-blue-200"
-                    onClick={() => updateForecast(activity.id)}
-                  >
-                    Update forecast
-                  </Button>
+                    {activity.note && (
+                      <p className="mt-2 text-sm text-stone-700">
+                        {activity.note}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <Button
+                      className="mt-2 block"
+                      onClick={() => showForecast(activity.id)}
+                    >
+                      View forecast
+                    </Button>
+                    <Button
+                      className=" text-blue-400 hover:text-blue-200"
+                      onClick={() => updateForecast(activity.id)}
+                    >
+                      Update forecast
+                    </Button>
+                  </div>
                 </div>
 
                 <div className="flex-shrink-0">
@@ -226,9 +230,9 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
                     Clear
                   </button>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
       </section>
     </>
