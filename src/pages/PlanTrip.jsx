@@ -7,6 +7,7 @@ import TripSidebar from "../Component/TripSidebar";
 import SelectedTrip from "../Component/SelectedTrip";
 
 import { useState, useEffect } from "react";
+import AppBar from "../Component/AppBar";
 
 const TRIPS_STORAGE_KEY = "trip_activities";
 
@@ -147,7 +148,7 @@ const PlanTrip = () => {
   return (
     <>
       <Navbar />
-      <main className="mt-[128px] min-h-screen my-8 flex gap-8">
+      <main className="mt-[128px] min-h-screen my-8 flex gap-8 ">
         <TripSidebar
           onStartAddTrip={handleStartAddTrip}
           trips={tripsState.trips}
@@ -156,6 +157,12 @@ const PlanTrip = () => {
         />
         {content}
       </main>
+      {/* <AppBar 
+        onStartAddTrip={handleStartAddTrip}
+        trips={tripsState.trips}
+        onSelectTrip={handleSelectTrip}
+        selectedTripId={tripsState.selectedTripId}
+      /> */}
       <Footer />
     </>
   );
