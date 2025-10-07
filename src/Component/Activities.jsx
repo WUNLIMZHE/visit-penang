@@ -1,7 +1,6 @@
 import { useState, useRef, useContext } from "react";
 import Button from "./Button";
 import NewActivity from "./NewActivity";
-// import PropTypes from "prop-types";
 import Forecast from "./Forecast";
 import Modal from "./Modal";
 import { forecastSpam } from "../services/utils/validation";
@@ -12,21 +11,19 @@ import {
 import { filterForecastByDateRange } from "../services/utils/filter";
 import { TripContext } from "../store/trip-context";
 
-// const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
 const Activities = () => {
-  const {selectedActivity, deleteActivity} = useContext(TripContext);
-  console.log(selectedActivity);
+  const {selectedActivity, deleteActivity, updateActivity} = useContext(TripContext);
+  // console.log(selectedActivity);
   const [activity, setActivity] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorMessageHeader, setErrorMessageHeader] = useState("");
-  const [forecast, setForecast] = useState({ type: "none", details: [] });
+  // const [forecast, setForecast] = useState({ type: "none", details: [] });
 
   const warningModal = useRef();
   const modal = useRef();
-  // const showForecast = (activityId) => {
   const showForecast = (activityId) => {
     const filteredActivity = selectedActivity.find((act) => act.id === activityId);
-    // const filteredActivity = selectedActivity;
+    // console.log("filteredActivity: ", filteredActivity);
     if (filteredActivity && filteredActivity.forecast) {
       setActivity(filteredActivity);
       modal.current.open();
@@ -36,8 +33,7 @@ const Activities = () => {
 
   const updateForecast = async (activityId) => {
     const filteredActivity = selectedActivity.find((act) => act.id === activityId);
-    // const filteredActivity = selectedActivity;
-    console.log(filteredActivity);
+    // console.log(filteredActivity);
     if (!filteredActivity) {
       setErrorMessage("Technical error occurred. Please try again.");
       setErrorMessageHeader("Error");
@@ -71,7 +67,7 @@ const Activities = () => {
     if (status === "trimForecast") {
       // trim existing forecast data to fit new time range
       const filteredForecastData = filterForecastByDateRange(
-        forecast.details,
+        activity.forecast.details,
         activity.startDate,
         activity.startTime,
         activity.endDate,
@@ -82,9 +78,14 @@ const Activities = () => {
         activity.endDate,
         filteredForecastData.details
       );
-      console.log("Trimmed forecast data:", forecastData);
+      // console.log("Trimmed forecast data:", forecastData);
       // update state
-      setForecast(forecastData);
+      // setForecast(forecastData);
+      const forecast = {
+        forecast: forecastData,
+      }
+      // console.log("forecast: ", forecast);
+      updateActivity(activityId, forecast);
       setErrorMessageHeader("Latest Forecast Data");
       setErrorMessage(
         "The existing forecast data is the latest available for the selected time range."
@@ -94,9 +95,8 @@ const Activities = () => {
     }
 
     try {
-      // const { lat, lon } = await getCoordinates(enteredLocation);
       const { lat, lon } = activity.coordinates;
-      console.log(`Coordinates: lat=${lat}, lon=${lon}`);
+      // console.log(`Coordinates: lat=${lat}, lon=${lon}`);
       // 🔑 pass full time range to getForecast
       const forecastData = await getForecast(
         lat,
@@ -107,10 +107,16 @@ const Activities = () => {
         activity.endTime
       );
 
-      console.log("Forecast data:", forecastData);
+      // console.log("Forecast data:", forecastData);
 
       // store structured forecast object in state
-      setForecast(forecastData);
+      // setForecast(forecastData);
+      // const {details, summary, type} = forecastData;
+      const forecast = {
+        forecast: forecastData,
+      }
+      // console.log("forecast: ", forecast);
+      updateActivity(activityId, forecast);
       // formModal.current.close();
     } catch (err) {
       // fallback option: allow saving without weather
@@ -135,18 +141,11 @@ const Activities = () => {
             </span>
           ))}
         </p>
-        {/* <p className="text-stone-600 mb-4">
-              Please make sure you provide a valid activity details.
-            </p> */}
       </Modal>
       <Modal ref={modal} buttonCaption="Okay" className="w-full max-w-lg ">
         <h2 className="text-xl font-bold text-stone-700 my-4">
           Weather Forecast
         </h2>
-        {/* <p className="text-stone-600 mb-4">{errorMessage}</p>
-        <p className="text-stone-600 mb-4">
-          Please make sure you provide a valid activity details.
-        </p> */}
         {activity && activity.forecast.details.length > 0 ? (
           activity.forecast.details.map(
             ({ time, condition, description, temp, humidity }) => {
@@ -182,21 +181,18 @@ const Activities = () => {
             </p>
           </div>
         )}
+        {/* {activity.forecast.details.length} */}
       </Modal>
       <section >
         <h2 className="text-2xl font-bold text-stone-700 mb-4">Activities</h2>
-        {/* <NewActivity onAdd={onAdd} tripDate={tripDate} /> */}
         <NewActivity />
-        {/* {activities.length === 0 && ( */}
         {selectedActivity.length === 0 && (
           <p className="text-stone-800 my-4">
             This trip does not have any activities. Plan your first activity in this trip!
           </p>
         )}
-        {/* {activities.length > 0 && ( */}
         {selectedActivity.length > 0 && (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3   gap-4 mt-8 rounded-md bg-stone-100">
-            {/* {activities.map((activity) => ( */}
             {selectedActivity.map((activity) => (
               <div
                 key={activity.id}
@@ -238,7 +234,6 @@ const Activities = () => {
                   <button
                     className="px-3 py-1 rounded-md text-sm font-medium 
                      text-red-600 hover:bg-red-50 hover:text-red-700"
-                    // onClick={() => onDelete(activity.id)}
                     onClick={() => deleteActivity(activity.id)}
                   >
                     Clear
@@ -254,21 +249,3 @@ const Activities = () => {
 };
 
 export default Activities;
-
-// Activities.propTypes = {
-//   activities: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-//       location: PropTypes.string.isRequired,
-//       startDate: PropTypes.string.isRequired,
-//       endDate: PropTypes.string.isRequired,
-//       startTime: PropTypes.string.isRequired,
-//       endTime: PropTypes.string.isRequired,
-//       note: PropTypes.string.isRequired,
-//     })
-//   ),
-//   onAdd: PropTypes.func.isRequired,
-//   onDelete: PropTypes.func.isRequired,
-//   tripDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)])
-//     .isRequired,
-// };

@@ -1,6 +1,5 @@
 import { useRef, useState, useContext } from "react";
 import Modal from "./Modal";
-// import PropTypes from "prop-types";
 import Input from "./Input";
 import Form from "./Form";
 import AutoComplete from "./AutoComplete";
@@ -14,7 +13,6 @@ import locations from "../data/locations";
 import Forecast from "./Forecast";
 import { TripContext } from "../store/trip-context";
 
-// const NewActivity = ({ onAdd, tripDate }) => {
 const NewActivity = () => {
   const {addActivity, selectedTrip} = useContext(TripContext);
 
@@ -44,10 +42,10 @@ const NewActivity = () => {
     const enteredStartTime = startTime.current.value;
     const enteredEndTime = endTime.current.value;
 
-    console.log(`enteredLocation: ${enteredLocation}`);
-    console.log(
-      `enteredCoordinates: ${JSON.stringify(location.current.coordinates)}`
-    );
+    // console.log(`enteredLocation: ${enteredLocation}`);
+    // console.log(
+    //   `enteredCoordinates: ${JSON.stringify(location.current.coordinates)}`
+    // );
     const validation = validateActivity({
       location: enteredLocation,
       startDate: enteredStartDate,
@@ -55,7 +53,7 @@ const NewActivity = () => {
       startTime: enteredStartTime,
       endTime: enteredEndTime,
       // tripDate: tripDate,
-      tripDate: selectedTrip.tripDate,
+      tripDate: selectedTrip.startDate,
     });
 
     if (!validation.valid) {
@@ -79,9 +77,9 @@ const NewActivity = () => {
     const enteredCoordinates = location.current.coordinates;
     const enteredForecast = forecast;
 
-    console.log(`enteredLocation: ${enteredLocation}`);
-    console.log(`enteredCoordinates: ${JSON.stringify(enteredCoordinates)}`);
-    console.log(`enteredForecast: ${JSON.stringify(enteredForecast)}`);
+    // console.log(`enteredLocation: ${enteredLocation}`);
+    // console.log(`enteredCoordinates: ${JSON.stringify(enteredCoordinates)}`);
+    // console.log(`enteredForecast: ${JSON.stringify(enteredForecast)}`);
 
     // validation
     if (!validation()) {
@@ -119,21 +117,21 @@ const NewActivity = () => {
   }
 
   async function handleWeatherForecast() {
-    console.log(`forecast state before fetch: ${JSON.stringify(forecast)}`);
-    console.log(
-      `Last forecast date: ${
-        forecast?.details?.length
-        ? forecast.details[forecast.details.length - 1].time.split(" ")[0]
-        : null 
-      }`
-    );
-    console.log("Checking weather forecast...");
+    // console.log(`forecast state before fetch: ${JSON.stringify(forecast)}`);
+    // console.log(
+    //   `Last forecast date: ${
+    //     forecast?.details?.length
+    //     ? forecast.details[forecast.details.length - 1].time.split(" ")[0]
+    //     : null 
+    //   }`
+    // );
+    // console.log("Checking weather forecast...");
     // validation
     if (!validation()) {
       return;
     }
 
-    console.log("Validation passed. Fetching weather...");
+    // console.log("Validation passed. Fetching weather...");
     // fetch coordinates
     const enteredCoordinates = location.current.coordinates;
     const enteredStartDate = startDate.current.value;
@@ -177,18 +175,15 @@ const NewActivity = () => {
         enteredEndDate,
         filteredForecastData.details
       );
-      console.log("Trimmed forecast data:", forecastData);
+      // console.log("Trimmed forecast data:", forecastData);
       // update state
       setForecast(forecastData);
-      // update the forecast.type
-      // if (enteredEnd)
-      // setForecast((prev) => ({ ...prev, type: "partial" }));
     }
 
     try {
       // const { lat, lon } = await getCoordinates(enteredLocation);
       const { lat, lon } = enteredCoordinates;
-      console.log(`Coordinates: lat=${lat}, lon=${lon}`);
+      // console.log(`Coordinates: lat=${lat}, lon=${lon}`);
       // 🔑 pass full time range to getForecast
       const forecastData = await getForecast(
         lat,
@@ -199,7 +194,7 @@ const NewActivity = () => {
         enteredEndTime
       );
 
-      console.log("Forecast data:", forecastData);
+      // console.log("Forecast data:", forecastData);
 
       // store structured forecast object in state
       setForecast(forecastData);
@@ -316,26 +311,6 @@ const NewActivity = () => {
           </button>
         </div>
       </Form>
-      {/* <div className="flex-nowrap items-center gap-4">
-        // {/* <input
-        //   type="text"
-        //   className="w-64 px-2 py-1 rounded-sm bg-stone-200"
-        //   value={enteredActivity}
-        //   onChange={handleChange}
-        // /> */}
-      {/* <Input type="text" label="Location" ref={location} />
-        <Input type="date" label="Start Date" ref={startDate} />
-        <Input type="time" label="Start Time" ref={startTime} />
-        <Input type="date" label="End Date" ref={endDate} />
-        <Input type="time" label="End Time" ref={endTime} />
-        <Input label="Note" textarea ref={note} />
-        <button
-          className="text-stone-700 hover:text-stone-950"
-          onClick={handleClick}
-        >
-          Add Activity
-        </button>
-      </div> */}
       <button
         className="text-stone-700 hover:text-stone-950"
         onClick={handleOpenFormSubmit}
@@ -347,11 +322,3 @@ const NewActivity = () => {
 };
 
 export default NewActivity;
-
-// NewActivity.propTypes = {
-//   onAdd: PropTypes.func.isRequired,
-//   tripDate: PropTypes.oneOfType([
-//     PropTypes.string,
-//     PropTypes.instanceOf(Date)
-//   ]).isRequired,
-// };

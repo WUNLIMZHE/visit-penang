@@ -13,5 +13,6 @@ export const TripContext = createContext({
   addTrip: () => {},
   deleteTrip: () => {},
   findTrip: () => {},
+  updateActivity: () => {},
 });
 
