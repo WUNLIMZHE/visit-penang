@@ -6,12 +6,14 @@ import NoTripSelected from "../Component/NoTripSelected";
 import TripSidebar from "../Component/TripSidebar";
 import SelectedTrip from "../Component/SelectedTrip";
 
-import { useState, useEffect } from "react";
-import AppBar from "../Component/AppBar";
+// import { useState, useEffect } from "react";
 
-const TRIPS_STORAGE_KEY = "trip_activities";
+// const TRIPS_STORAGE_KEY = "trip_activities";
+import {useContext} from "react";
+import { TripContext } from "../store/trip-context";
 
 const PlanTrip = () => {
+  const {trips} = useContext(TripContext)
   // const [tripsState, setTripsState] = useState({
   //   selectedTripId: undefined,
   //   selectedActivityId: undefined,
@@ -19,150 +21,148 @@ const PlanTrip = () => {
   //   activities: [],
   // });
 
-  // Load activities from localStorage on mount
-  const [tripsState, setTripsState] = useState(() => {
-    const stored = localStorage.getItem(TRIPS_STORAGE_KEY);
-    return stored
-      ? JSON.parse(stored)
-      : {
-          selectedTripId: undefined,
-          selectedActivityId: undefined,
-          trips: [],
-          activities: [],
-        };
-  });
+  // // Load activities from localStorage on mount
+  // const [tripsState, setTripsState] = useState(() => {
+  //   const stored = localStorage.getItem(TRIPS_STORAGE_KEY);
+  //   return stored
+  //     ? JSON.parse(stored)
+  //     : {
+  //         selectedTripId: undefined,
+  //         selectedActivityId: undefined,
+  //         trips: [],
+  //         activities: [],
+  //       };
+  // });
 
-  // Save activities to localStorage whenever they change
-  useEffect(() => {
-    localStorage.setItem(TRIPS_STORAGE_KEY, JSON.stringify(tripsState));
-  }, [tripsState]);
+  // // Save activities to localStorage whenever they change
+  // useEffect(() => {
+  //   localStorage.setItem(TRIPS_STORAGE_KEY, JSON.stringify(tripsState));
+  // }, [tripsState]);
 
-  function handleAddActivity(activityData) {
-    setTripsState((prevState) => {
-      const activityId = Math.random();
+  // function handleAddActivity(activityData) {
+  //   setTripsState((prevState) => {
+  //     const activityId = Math.random();
 
-      const newActivity = {
-        ...activityData,
-        tripId: prevState.selectedTripId,
-        id: activityId,
-      };
+  //     const newActivity = {
+  //       ...activityData,
+  //       tripId: prevState.selectedTripId,
+  //       id: activityId,
+  //     };
 
-      return {
-        ...prevState,
-        activities: [newActivity, ...prevState.activities],
-      };
-    });
-  }
+  //     return {
+  //       ...prevState,
+  //       activities: [newActivity, ...prevState.activities],
+  //     };
+  //   });
+  // }
 
-  function handleDeleteActivity(id) {
-    setTripsState((prevState) => {
-      return {
-        ...prevState,
-        activities: prevState.activities.filter(
-          (activity) => activity.id !== id
-        ),
-      };
-    });
-  }
+  // function handleDeleteActivity(id) {
+  //   setTripsState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       activities: prevState.activities.filter(
+  //         (activity) => activity.id !== id
+  //       ),
+  //     };
+  //   });
+  // }
 
-  function handleStartAddTrip() {
-    setTripsState((prevState) => {
-      return {
-        ...prevState,
-        selectedTripId: null,
-      };
-    });
-  }
+  // function handleStartAddTrip() {
+  //   setTripsState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       selectedTripId: null,
+  //     };
+  //   });
+  // }
 
-  function handleCancelAddTrip() {
-    setTripsState((prevState) => {
-      return {
-        ...prevState,
-        selectedTripId: undefined,
-      };
-    });
-  }
+  // function handleCancelAddTrip() {
+  //   setTripsState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       selectedTripId: undefined,
+  //     };
+  //   });
+  // }
 
-  function handleSelectTrip(id) {
-    console.log(id);
-    setTripsState((prevState) => {
-      return {
-        ...prevState,
-        selectedTripId: id,
-      };
-    });
-  }
+  // function handleSelectTrip(id) {
+  //   console.log(id);
+  //   setTripsState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       selectedTripId: id,
+  //     };
+  //   });
+  // }
 
-  function handleAddTrip(tripData) {
-    console.log(tripData);
-    setTripsState((prevState) => {
-      const tripId = Math.random();
+  // function handleAddTrip(tripData) {
+  //   console.log(tripData);
+  //   setTripsState((prevState) => {
+  //     const tripId = Math.random();
 
-      const newTrip = {
-        ...tripData,
-        id: tripId,
-      };
+  //     const newTrip = {
+  //       ...tripData,
+  //       id: tripId,
+  //     };
 
-      return {
-        ...prevState,
-        selectedTripId: undefined,
-        trips: [...prevState.trips, newTrip],
-      };
-    });
-  }
+  //     return {
+  //       ...prevState,
+  //       selectedTripId: undefined,
+  //       trips: [...prevState.trips, newTrip],
+  //     };
+  //   });
+  // }
 
-  function handleDeleteTrip() {
-    setTripsState((prevState) => {
-      return {
-        ...prevState,
-        selectedTripId: undefined,
-        trips: prevState.trips.filter(
-          (trip) => trip.id !== prevState.selectedTripId
-        ),
-      };
-    });
-  }
+  // function handleDeleteTrip() {
+  //   setTripsState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       selectedTripId: undefined,
+  //       trips: prevState.trips.filter(
+  //         (trip) => trip.id !== prevState.selectedTripId
+  //       ),
+  //     };
+  //   });
+  // }
 
-  const selectedTrip = tripsState.trips.find(
-    (trip) => trip.id === tripsState.selectedTripId
-  );
+  // const selectedTrip = tripsState.trips.find(
+  //   (trip) => trip.id === tripsState.selectedTripId
+  // );
 
   //onAddActivity and onDeleteActivity are prop drilling that we should avoid
   // prop drilling = props that being passed to children then being passed to next children (grandparent to grandchildren)
   let content = (
-    <SelectedTrip
-      trip={selectedTrip}
-      onDelete={handleDeleteTrip}
-      onAddActivity={handleAddActivity}
-      onDeleteActivity={handleDeleteActivity}
-      activities={tripsState.activities}
-    />
+    // <SelectedTrip
+    //   trip={selectedTrip}
+    //   onDelete={handleDeleteTrip}
+    //   onAddActivity={handleAddActivity}
+    //   onDeleteActivity={handleDeleteActivity}
+    //   activities={tripsState.activities}
+    // />
+    <SelectedTrip />
   );
 
-  if (tripsState.selectedTripId === null) {
-    content = <NewTrip onAdd={handleAddTrip} onCancel={handleCancelAddTrip} />;
-  } else if (tripsState.selectedTripId === undefined) {
-    content = <NoTripSelected onStartAddTrip={handleStartAddTrip} />;
+  if (trips.selectedTripId === null) {
+    // content = <NewTrip onAdd={handleAddTrip} onCancel={handleCancelAddTrip} />;
+    content = <NewTrip />;
+  } else if (trips.selectedTripId === undefined) {
+    // content = <NoTripSelected onStartAddTrip={handleStartAddTrip} />;
+    content = <NoTripSelected />;
   }
 
   return (
     <>
       <Navbar />
       <main className="mt-[128px] min-h-screen my-8 flex gap-8 ">
-        <TripSidebar
+        {/* <TripSidebar
           onStartAddTrip={handleStartAddTrip}
           trips={tripsState.trips}
           onSelectTrip={handleSelectTrip}
           selectedTripId={tripsState.selectedTripId}
-        />
+        /> */}
+        <TripSidebar/>
         {content}
       </main>
-      {/* <AppBar 
-        onStartAddTrip={handleStartAddTrip}
-        trips={tripsState.trips}
-        onSelectTrip={handleSelectTrip}
-        selectedTripId={tripsState.selectedTripId}
-      /> */}
       <Footer />
     </>
   );

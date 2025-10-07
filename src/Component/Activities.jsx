@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import Button from "./Button";
 import NewActivity from "./NewActivity";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import Forecast from "./Forecast";
 import Modal from "./Modal";
 import { forecastSpam } from "../services/utils/validation";
@@ -10,8 +10,12 @@ import {
   buildForecastResponse,
 } from "../services/api/weatherServices";
 import { filterForecastByDateRange } from "../services/utils/filter";
+import { TripContext } from "../store/trip-context";
 
-const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
+// const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
+const Activities = () => {
+  const {selectedActivity, deleteActivity} = useContext(TripContext);
+  console.log(selectedActivity);
   const [activity, setActivity] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorMessageHeader, setErrorMessageHeader] = useState("");
@@ -19,8 +23,10 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
 
   const warningModal = useRef();
   const modal = useRef();
+  // const showForecast = (activityId) => {
   const showForecast = (activityId) => {
-    const filteredActivity = activities.find((act) => act.id === activityId);
+    const filteredActivity = selectedActivity.find((act) => act.id === activityId);
+    // const filteredActivity = selectedActivity;
     if (filteredActivity && filteredActivity.forecast) {
       setActivity(filteredActivity);
       modal.current.open();
@@ -29,7 +35,8 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
   };
 
   const updateForecast = async (activityId) => {
-    const filteredActivity = activities.find((act) => act.id === activityId);
+    const filteredActivity = selectedActivity.find((act) => act.id === activityId);
+    // const filteredActivity = selectedActivity;
     console.log(filteredActivity);
     if (!filteredActivity) {
       setErrorMessage("Technical error occurred. Please try again.");
@@ -145,6 +152,8 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
             ({ time, condition, description, temp, humidity }) => {
               const dateObj = new Date(time);
               const formattedTime = dateObj.toLocaleString("en-US", {
+                month: "short",
+                day: "2-digit",
                 weekday: "short",
                 hour: "2-digit",
                 minute: "2-digit",
@@ -174,17 +183,21 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
           </div>
         )}
       </Modal>
-      <section>
+      <section >
         <h2 className="text-2xl font-bold text-stone-700 mb-4">Activities</h2>
-        <NewActivity onAdd={onAdd} tripDate={tripDate} />
-        {activities.length === 0 && (
+        {/* <NewActivity onAdd={onAdd} tripDate={tripDate} /> */}
+        <NewActivity />
+        {/* {activities.length === 0 && ( */}
+        {selectedActivity.length === 0 && (
           <p className="text-stone-800 my-4">
-            This project does not have any activities
+            This trip does not have any activities. Plan your first activity in this trip!
           </p>
         )}
-        {activities.length > 0 && (
+        {/* {activities.length > 0 && ( */}
+        {selectedActivity.length > 0 && (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3   gap-4 mt-8 rounded-md bg-stone-100">
-            {activities.map((activity) => (
+            {/* {activities.map((activity) => ( */}
+            {selectedActivity.map((activity) => (
               <div
                 key={activity.id}
                 className="flex flex-col md:flex-row md:items-center justify-between 
@@ -225,7 +238,8 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
                   <button
                     className="px-3 py-1 rounded-md text-sm font-medium 
                      text-red-600 hover:bg-red-50 hover:text-red-700"
-                    onClick={() => onDelete(activity.id)}
+                    // onClick={() => onDelete(activity.id)}
+                    onClick={() => deleteActivity(activity.id)}
                   >
                     Clear
                   </button>
@@ -241,20 +255,20 @@ const Activities = ({ activities, onAdd, onDelete, tripDate }) => {
 
 export default Activities;
 
-Activities.propTypes = {
-  activities: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-      location: PropTypes.string.isRequired,
-      startDate: PropTypes.string.isRequired,
-      endDate: PropTypes.string.isRequired,
-      startTime: PropTypes.string.isRequired,
-      endTime: PropTypes.string.isRequired,
-      note: PropTypes.string.isRequired,
-    })
-  ),
-  onAdd: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  tripDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)])
-    .isRequired,
-};
+// Activities.propTypes = {
+//   activities: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+//       location: PropTypes.string.isRequired,
+//       startDate: PropTypes.string.isRequired,
+//       endDate: PropTypes.string.isRequired,
+//       startTime: PropTypes.string.isRequired,
+//       endTime: PropTypes.string.isRequired,
+//       note: PropTypes.string.isRequired,
+//     })
+//   ),
+//   onAdd: PropTypes.func.isRequired,
+//   onDelete: PropTypes.func.isRequired,
+//   tripDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)])
+//     .isRequired,
+// };
