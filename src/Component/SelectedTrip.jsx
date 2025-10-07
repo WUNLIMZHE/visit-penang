@@ -1,53 +1,62 @@
 import Activities from "./Activities";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import { TripContext } from "../store/trip-context";
+import {useContext} from "react";
 
-const SelectedTrip = ({ trip, onDelete, onAddActivity, onDeleteActivity, activities }) => {
-  const formattedDate = new Date(trip.startDate).toLocaleDateString("en-US", {
+// const SelectedTrip = ({ trip, onDelete, onAddActivity, onDeleteActivity, activities }) => {
+const SelectedTrip = () => {
+  const {selectedTrip, deleteTrip } = useContext(TripContext);
+  // const formattedDate = new Date(trip.startDate).toLocaleDateString("en-US", {
+  const formattedDate = new Date(selectedTrip.startDate).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
   });
   return (
-    <div className="mr-5 mt-16">
+    <div className="ml-3 md:ml-0 mt-2 mr-5 md:mt-16 w-full">
       <header className="pb-4 mb-4 border-b-2 border-stone-300">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold text-stone-600 mb-2">
-            {trip.title}
+            {/* {trip.title} */}
+            {selectedTrip.title}
           </h1>
-          <button className="text-stone-600 hover:text-stone-950" onClick={onDelete}>
+          {/* <button className="text-stone-600 hover:text-stone-950" onClick={onDelete}> */}
+          <button className="text-stone-600 hover:text-stone-950" onClick={deleteTrip}>
             Delete
           </button>
         </div>
         <p className="mb-4 text-stone-400">{formattedDate}</p>
         <p className="text-stone-600 whitespace-pre-wrap">
-          {trip.description}
+          {/* {trip.description} */}
+          {selectedTrip.description}
         </p>
       </header>
-      <Activities onAdd={onAddActivity} onDelete={onDeleteActivity} activities={activities} tripDate={trip.startDate}/>
+      {/* <Activities onAdd={onAddActivity} onDelete={onDeleteActivity} activities={activities} tripDate={trip.startDate}/> */}
+      <Activities />
     </div>
   );
 };
 
 export default SelectedTrip;
 
-SelectedTrip.propTypes = {
-  trip: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    startDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
-    description: PropTypes.string,
-  }),
-  onDelete: PropTypes.func.isRequired,
-  onAddActivity: PropTypes.func.isRequired,
-  onDeleteActivity: PropTypes.func.isRequired,
-  activities: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-      startDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
-      endDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
-      location: PropTypes.string.isRequired,
-      startTime: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
-      endTime: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
-      note: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
+// SelectedTrip.propTypes = {
+//   trip: PropTypes.shape({
+//     title: PropTypes.string.isRequired,
+//     startDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+//     description: PropTypes.string,
+//   }),
+//   onDelete: PropTypes.func.isRequired,
+//   onAddActivity: PropTypes.func.isRequired,
+//   onDeleteActivity: PropTypes.func.isRequired,
+//   activities: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+//       startDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+//       endDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+//       location: PropTypes.string.isRequired,
+//       startTime: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+//       endTime: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+//       note: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+// };

@@ -1,10 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { validateTrip } from "../services/utils/validation";
+import { TripContext } from "../store/trip-context";
 
-const NewTrip = ({ onAdd, onCancel }) => {
+// const NewTrip = ({ onAdd, onCancel }) => {
+const NewTrip = () => {
+  const {addTrip, cancelAddTrip} = useContext(TripContext);
   const [errorMessageHeader, setErrorMessageHeader] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -43,7 +46,8 @@ const NewTrip = ({ onAdd, onCancel }) => {
     }
 
     // validation ...
-    onAdd({
+    // onAdd({
+    addTrip({
       title: enteredTitle,
       description: enteredDescription,
       startDate: enteredStartDate,
@@ -60,7 +64,8 @@ const NewTrip = ({ onAdd, onCancel }) => {
       <div className="w-[35rem] mt-16">
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
-            <button className="text-stone-800 hover:text-stone-950" onClick={onCancel}>
+            {/* <button className="text-stone-800 hover:text-stone-950" onClick={onCancel}> */}
+            <button className="text-stone-800 hover:text-stone-950" onClick={cancelAddTrip}>
               Cancel
             </button>
           </li>
@@ -85,7 +90,7 @@ const NewTrip = ({ onAdd, onCancel }) => {
 
 export default NewTrip;
 
-NewTrip.propTypes = {
-  onAdd: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
-};
+// NewTrip.propTypes = {
+//   onAdd: PropTypes.func.isRequired,
+//   onCancel: PropTypes.func.isRequired,
+// };

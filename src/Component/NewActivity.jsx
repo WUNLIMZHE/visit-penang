@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 import Modal from "./Modal";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import Input from "./Input";
 import Form from "./Form";
 import AutoComplete from "./AutoComplete";
@@ -12,8 +12,12 @@ import { validateActivity, forecastSpam } from "../services/utils/validation";
 import { filterForecastByDateRange } from "../services/utils/filter";
 import locations from "../data/locations";
 import Forecast from "./Forecast";
+import { TripContext } from "../store/trip-context";
 
-const NewActivity = ({ onAdd, tripDate }) => {
+// const NewActivity = ({ onAdd, tripDate }) => {
+const NewActivity = () => {
+  const {addActivity, selectedTrip} = useContext(TripContext);
+
   const warningModal = useRef();
   const formModal = useRef();
 
@@ -50,7 +54,8 @@ const NewActivity = ({ onAdd, tripDate }) => {
       endDate: enteredEndDate,
       startTime: enteredStartTime,
       endTime: enteredEndTime,
-      tripDate: tripDate,
+      // tripDate: tripDate,
+      tripDate: selectedTrip.tripDate,
     });
 
     if (!validation.valid) {
@@ -83,7 +88,8 @@ const NewActivity = ({ onAdd, tripDate }) => {
       return;
     }
 
-    onAdd({
+    // onAdd({
+    addActivity({
       location: enteredLocation,
       startDate: enteredStartDate,
       endDate: enteredEndDate,
@@ -342,10 +348,10 @@ const NewActivity = ({ onAdd, tripDate }) => {
 
 export default NewActivity;
 
-NewActivity.propTypes = {
-  onAdd: PropTypes.func.isRequired,
-  tripDate: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.instanceOf(Date)
-  ]).isRequired,
-};
+// NewActivity.propTypes = {
+//   onAdd: PropTypes.func.isRequired,
+//   tripDate: PropTypes.oneOfType([
+//     PropTypes.string,
+//     PropTypes.instanceOf(Date)
+//   ]).isRequired,
+// };

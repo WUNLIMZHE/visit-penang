@@ -54,16 +54,19 @@
 //   selectedTripId: PropTypes.number,
 // };
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Button from "./Button";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import { TripContext } from "../store/trip-context";
 
-const TripSidebar = ({
-  onStartAddTrip,
-  trips,
-  onSelectTrip,
-  selectedTripId,
-}) => {
+// const TripSidebar = ({
+//   onStartAddTrip,
+//   trips,
+//   onSelectTrip,
+//   selectedTripId,
+// }) => {
+const TripSidebar = () => {
+  const {startAddTrip, trips, selectTrip} = useContext(TripContext);
   const [showDrawer, setShowDrawer] = useState(false);
 
   // Sidebar for desktop/tablet
@@ -73,13 +76,15 @@ const TripSidebar = ({
         Your Trips
       </h2>
       <div>
-        <Button onClick={onStartAddTrip}>+ Add Trip</Button>
+        {/* <Button onClick={onStartAddTrip}>+ Add Trip</Button> */}
+        <Button onClick={startAddTrip}>+ Add Trip</Button>
       </div>
       <ul className="mt-8">
-        {trips.map((trip) => {
+        {trips.trips.map((trip) => {
           let cssClasses =
             "w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800";
-          if (trip.id === selectedTripId) {
+          // if (trip.id === selectedTripId) {
+          if (trip.id === trips.selectedTripId) {
             cssClasses += " bg-stone-800 text-stone-200";
           } else {
             cssClasses += " text-stone-400";
@@ -88,7 +93,8 @@ const TripSidebar = ({
             <li key={trip.id}>
               <button
                 className={cssClasses}
-                onClick={() => onSelectTrip(trip.id)}
+                // onClick={() => onSelectTrip(trip.id)}
+                onClick={() => selectTrip(trip.id)}
               >
                 {trip.title}
               </button>
@@ -116,16 +122,18 @@ const TripSidebar = ({
         </button>
       </div>
       <ul className="mt-4 px-6">
-        {trips.map((trip) => (
+        {trips.trips.map((trip) => (
           <li key={trip.id}>
             <button
               className={`w-full text-left px-2 py-2 rounded-sm my-1 ${
-                trip.id === selectedTripId
+                // trip.id === selectedTripId
+                trip.id === trips.selectedTripId
                   ? "bg-stone-800 text-stone-200"
                   : "text-stone-400"
               }`}
               onClick={() => {
-                onSelectTrip(trip.id);
+                // onSelectTrip(trip.id);
+                selectTrip(trip.id)
                 setShowDrawer(false);
               }}
             >
@@ -140,7 +148,8 @@ const TripSidebar = ({
   // App bar for mobile
   const appBar = (
     <div className="h-20 fixed bottom-0 left-0 w-full bg-stone-900 flex justify-around items-center py-3 z-40 md:hidden">
-      <Button onClick={onStartAddTrip}>+ Add Trip</Button>
+      {/* <Button onClick={onStartAddTrip}>+ Add Trip</Button> */}
+      <Button onClick={startAddTrip}>+ Add Trip</Button>
       <Button onClick={() => setShowDrawer(true)}>My Trip</Button>
     </div>
   );
@@ -156,14 +165,14 @@ const TripSidebar = ({
 
 export default TripSidebar;
 
-TripSidebar.propTypes = {
-  onStartAddTrip: PropTypes.func.isRequired,
-  trips: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  onSelectTrip: PropTypes.func.isRequired,
-  selectedTripId: PropTypes.number,
-};
+// TripSidebar.propTypes = {
+//   onStartAddTrip: PropTypes.func.isRequired,
+//   trips: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       title: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+//   onSelectTrip: PropTypes.func.isRequired,
+//   selectedTripId: PropTypes.number,
+// };
