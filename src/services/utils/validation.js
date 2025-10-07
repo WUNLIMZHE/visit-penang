@@ -201,26 +201,34 @@ export function checkForecastStatus(
   { maxForecastDays = 5 } = {}
 ) {
   const MS_PER_DAY = 24 * 60 * 60 * 1000;
+  const API_REFRESH_HOURS = 3;
+  const TOLERANCE_MS = API_REFRESH_HOURS * 60 * 60 * 1000;
 
+  // Normalize today's date (midnight)
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // Parse & normalize input
+  // Parse input dates
   const activityStart = new Date(activityStartDate);
   const activityEnd = new Date(activityEndDate);
   const forecastStart = new Date(forecastStartDate);
   const forecastEnd = new Date(forecastEndDate);
 
-  [activityStart, activityEnd, forecastStart, forecastEnd].forEach((d) =>
-    d.setHours(0, 0, 0, 0)
-  );
-
-  // Validation
+  // Validate input
   if (isNaN(activityStart) || isNaN(activityEnd)) {
     return { status: "invalidDate", message: "Invalid activity date." };
   }
-  if (!forecastStartDate || !forecastEndDate) {
-    return { status: "requestForecast", message: "No forecast data yet." };
+
+  if (
+    !forecastStartDate ||
+    !forecastEndDate ||
+    isNaN(forecastStart) ||
+    isNaN(forecastEnd)
+  ) {
+    return {
+      status: "requestForecast",
+      message: "No forecast data available yet.",
+    };
   }
 
   // Derived values
@@ -232,26 +240,40 @@ export function checkForecastStatus(
   const daysBeyondForecast = Math.ceil(
     (activityEnd - forecastEnd) / MS_PER_DAY
   );
-  
-  // CASE 1: activity is in the past
-  if (activityEnd < today) {
+
+  // Convert all to timestamps for cleaner comparisons
+  const start = activityStart.getTime();
+  const end = activityEnd.getTime();
+  const fStart = forecastStart.getTime();
+  const fEnd = forecastEnd.getTime();
+  const maxEnd = maxForecastEnd.getTime();
+  const now = today.getTime();
+
+  // 🧩 CASE 1: Activity is in the past
+  if (end < now - TOLERANCE_MS) {
     return {
       status: "pastActivity",
       message: "This activity has already ended.",
     };
   }
 
-  // CASE 2: activity completely within forecast range → reuse data
-  if (activityStart >= forecastStart && activityEnd <= forecastEnd) {
+  // 🧩 CASE 2: Activity is fully within current forecast (±1h tolerance)
+  if (
+    start >= fStart - TOLERANCE_MS &&
+    (end <= fEnd + TOLERANCE_MS || fEnd >= maxEnd)
+  ) {
     return {
       status: "trimForecast",
       message:
-        "Activity range is within the current forecast data. Reuse existing forecast.",
+        "Activity range is within the current forecast window (±1 hour tolerance). Reuse existing forecast.",
     };
   }
 
-  // CASE 3: activity extends beyond forecast, but still within max API limit
-  if (activityStart < forecastStart || (activityEnd > forecastEnd && activityEnd <= maxForecastEnd)) {
+  // 🧩 CASE 3: Activity extends beyond forecast, but within API limit
+  if (
+    start < fStart - TOLERANCE_MS||
+    (end > fEnd + TOLERANCE_MS && end <= maxEnd + TOLERANCE_MS)
+  ) {
     return {
       status: "extendForecast",
       message: `Activity extends ${daysBeyondForecast} day(s) beyond current forecast. Extend forecast (still within ${maxForecastDays}-day limit).`,
@@ -259,8 +281,8 @@ export function checkForecastStatus(
     };
   }
 
-  // CASE 4: activity exceeds API max range
-  if (activityEnd > maxForecastEnd) {
+  // 🧩 CASE 4: Activity exceeds maximum forecastable range
+  if (end > maxEnd + TOLERANCE_MS) {
     return {
       status: "beyondForecast",
       message: `Forecast data is only available up to ${maxForecastDays} day(s) from today. Activity extends ${daysBeyondForecast} day(s) beyond available forecast.`,
@@ -268,15 +290,15 @@ export function checkForecastStatus(
     };
   }
 
-  // CASE 5: forecast missing or expired
-  if (forecastEnd < today) {
+  // 🧩 CASE 5: Forecast expired or missing
+  if (fEnd < now - TOLERANCE_MS) {
     return {
       status: "requestForecast",
-      message: "Forecast is outdated or missing. Request new data.",
+      message: "Forecast data is outdated or missing. Request new forecast.",
     };
   }
 
-  // Fallback
+  // 🧩 Fallback
   return {
     status: "unknown",
     message: "Unable to determine forecast status.",

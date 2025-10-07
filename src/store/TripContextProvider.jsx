@@ -70,7 +70,7 @@ export const TripContextProvider = ({ children }) => {
   }
 
   function handleSelectTrip(id) {
-    console.log(id);
+    // console.log(id);
     setTripsState((prevState) => {
       return {
         ...prevState,
@@ -80,7 +80,7 @@ export const TripContextProvider = ({ children }) => {
   }
 
   function handleAddTrip(tripData) {
-    console.log(tripData);
+    // console.log(tripData);
     setTripsState((prevState) => {
       const tripId = Math.random();
 
@@ -109,22 +109,21 @@ export const TripContextProvider = ({ children }) => {
     });
   }
 
-  // function findTrip() {
-  //   return tripsState.trips.find(
-  //     (trip) => trip.id === tripsState.selectedTripId
-  //   );
-  // }
-
-  // function findActivities() {
-  //   return tripsState.trips.filter(
-  //     (trip) => trip.id === tripsState.selectedTripId
-  //   );
-  // }
-
-  // const selectedTrip = tripsState.trips.find(
-  //   (trip) => trip.id === tripsState.selectedTripId
-  // );
-
+  function handleUpdateActivity(activityId, updatedData) {
+    setTripsState((prevState) => {
+      // console.log(updatedData);
+      const updatedActivities = prevState.activities.map((activity) =>
+        activity.id === activityId
+          ? { ...activity, ...updatedData } // merge the updated fields
+          : activity
+      );
+      // console.log("updatedActivities: ", updatedActivities);
+      return {
+        ...prevState,
+        activities: updatedActivities,
+      };
+    });
+  }
 
   // Used to return a derived result (no side effects)
   // Runs during render
@@ -140,8 +139,8 @@ export const TripContextProvider = ({ children }) => {
     );
   }, [tripsState.selectedTripId, tripsState.activities]);
 
-  console.log(selectedTrip);
-  console.log(selectedActivity);
+  // console.log(selectedTrip);
+  // console.log(selectedActivity);
 
   const contextVal = {
     trips: tripsState,
@@ -154,9 +153,12 @@ export const TripContextProvider = ({ children }) => {
     selectTrip: handleSelectTrip,
     addTrip: handleAddTrip,
     deleteTrip: handleDeleteTrip,
+    updateActivity: handleUpdateActivity,
   };
 
-  return <TripContext.Provider value={contextVal}>{children}</TripContext.Provider>
+  return (
+    <TripContext.Provider value={contextVal}>{children}</TripContext.Provider>
+  );
 };
 
 TripContextProvider.propTypes = {

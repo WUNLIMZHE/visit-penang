@@ -24,7 +24,7 @@ const AutoComplete = React.forwardRef(({ label, data, ...props }, ref) => {
   }));
 
   const handleChange = () => {
-    console.log(location.current.value);
+    // console.log(location.current.value);
     setQuery(location.current.value);
     if (location.current.value.length > 0) {
       const filtered = data.filter((item) =>
@@ -42,7 +42,7 @@ const AutoComplete = React.forwardRef(({ label, data, ...props }, ref) => {
     location.current.value = item.name;
     setQuery(item.name);
     setCoordinates({ lat: item.lat, lon: item.lon });
-    console.log(`Selected coordinates: lat=${item.lat}, lon=${item.lon}`);
+    // console.log(`Selected coordinates: lat=${item.lat}, lon=${item.lon}`);
     setFilteredData([]);
     setShowSuggestions(false);
   };

@@ -1,11 +1,9 @@
 import { useState, useRef, useContext } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
-// import PropTypes from "prop-types";
 import { validateTrip } from "../services/utils/validation";
 import { TripContext } from "../store/trip-context";
 
-// const NewTrip = ({ onAdd, onCancel }) => {
 const NewTrip = () => {
   const {addTrip, cancelAddTrip} = useContext(TripContext);
   const [errorMessageHeader, setErrorMessageHeader] = useState("");
@@ -22,15 +20,6 @@ const NewTrip = () => {
     const enteredDescription = description.current.value;
     const enteredStartDate = startDate.current.value;
 
-    // if (
-    //   enteredTitle.trim() === "" ||
-    //   enteredDescription.trim() === "" ||
-    //   enteredStartDate.trim() === ""
-    // ) {
-    //   // show the error modal
-    //   modal.current.open();
-    //   return;
-    // }
     const { valid, message } = validateTrip({
       title: enteredTitle,
       description: enteredDescription,
@@ -46,7 +35,6 @@ const NewTrip = () => {
     }
 
     // validation ...
-    // onAdd({
     addTrip({
       title: enteredTitle,
       description: enteredDescription,
@@ -61,10 +49,10 @@ const NewTrip = () => {
         <p className="text-stone-600 mb-4">{errorMessage}</p>
         <p className="text-stone-600 mb-4">Please make sure you provide a valid value for every input field.</p>
       </Modal>
-      <div className="w-[35rem] mt-16">
+      <div className="w-[35rem] mt-16 mx-2 md:mx-0 ">
+        <h1 className="text-stone-600 text-xl lg:text-3xl font-bold">New Trip</h1>
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
-            {/* <button className="text-stone-800 hover:text-stone-950" onClick={onCancel}> */}
             <button className="text-stone-800 hover:text-stone-950" onClick={cancelAddTrip}>
               Cancel
             </button>
@@ -90,7 +78,3 @@ const NewTrip = () => {
 
 export default NewTrip;
 
-// NewTrip.propTypes = {
-//   onAdd: PropTypes.func.isRequired,
-//   onCancel: PropTypes.func.isRequired,
-// };
