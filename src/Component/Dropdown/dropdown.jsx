@@ -22,21 +22,26 @@ export default function Dropdown() {
             </Link>
           </li>
           <li>
-            <Link to="/Food">
+            <Link to="/food">
               <span className="fancy-hover relative">Food</span>
             </Link>
           </li>
           <li>
-            <Link to="/Tourism">
+            <Link to="/tourism">
               <span className="fancy-hover relative">Tourism</span>
             </Link>
           </li>
           <li>
-            <Link to="/Hotels">
+            <Link to="/hotels">
               <span className="fancy-hover relative">Hotels</span>
             </Link>
           </li>
           <li>
+            <Link to="/plan-trip">
+              <span className="fancy-hover relative">Plan Your Trip</span>
+            </Link>
+          </li>
+          {/* <li>
             <a
               href="https://www.linkedin.com/in/wunlimzhe/"
               className="fancy-hover relative"
@@ -45,7 +50,7 @@ export default function Dropdown() {
             >
               Contact
             </a>
-          </li>
+          </li> */}
         </ul>
       )}
     </>
